@@ -1,150 +1,9 @@
 /**
- * Aplicación Principal - SmartMenúu Orders
- * Renderiza dinámicamente la UI basándose en RESTAURANT_CONFIG y maneja el carrito.
+ * La Nonna Rústica - Premium Menu Logic
+ * Last Updated: 2026-05-03 22:33:30 (Force Refresh)
  */
 
-let carrito = {}; 
-let categoriaActual = "Todos"; 
-let ultimoIdAgregado = null; // Para animaciones de impacto
-function transformarLinkImagen(url) {
-    if (!url) return '';
-    if (url.includes('drive.google.com')) {
-        const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
-        if (match && match[1]) {
-            return `https://drive.google.com/uc?export=view&id=${match[1]}`;
-        }
-    }
-    // Resolucion relativa segura y simple para que nunca falle en subcarpetas
-    if (url.startsWith('img/')) {
-        if (window.location.pathname.includes('/pages/')) {
-            return '../../' + url;
-        }
-        return url;
-    }
-    return url;
-}
-
-function formatoDinero(valor) {
-    return RESTAURANT_CONFIG.moneda + parseFloat(valor).toLocaleString('es-CO');
-}
-
-<<<<<<< HEAD:js/app.js
-document.addEventListener("DOMContentLoaded", async () => {
-=======
-window.initSmartMenu = async () => {
-    // El Preloader.jsx ya maneja su propia animación.
->>>>>>> e178297 (🚀 Premium Migration: Restore legacy base styles, fix character encoding, and refine modal UI spacing):public/js/app.js
-    inicializarTema();
-    
-    // Feature 08: Recuperador de Carrito
-    recuperarCarrito();
-    
-    // Only run menu-specific rendering if the menu container exists
-    const menuContainer = document.getElementById("menu-container") || document.getElementById("ui-contenedor-menu") || document.getElementById("mn-main");
-    if (menuContainer) {
-        console.log("Iniciando Renderizado de Menú...");
-        renderizarHeader();
-        mostrarSkeletons(); 
-        
-<<<<<<< HEAD:js/app.js
-        // await cargarDatosDesdeSheet(); 
-        
-        renderizarPromociones();
-        renderizarCategorias();
-        renderizarEspecialDia(); // Feature 17
-=======
-        await cargarDatosDesdeSheet(); 
-        
-        renderizarCategorias();
-        renderizarCarouselPromociones();
->>>>>>> e178297 (🚀 Premium Migration: Restore legacy base styles, fix character encoding, and refine modal UI spacing):public/js/app.js
-        renderizarProductos(); 
-        inicializarObserverLiquid(); 
-        inicializarScrollProgresivo(); 
-        actualizarEstadoRestaurante(); 
-<<<<<<< HEAD:js/app.js
-        renderizarMiniMenúuCats(); 
-        inicializarObserverLiquid(); 
-    } else {
-        // If it's not the menu page, we just load sheet data silently for the cart logic mostly
-        // or just apply basic theming
-        // await cargarDatosDesdeSheet();
-    }
-
-    // Common global initializations
-    actualizarUiCarrito(); // Ensure dynamic cart badge works globally
-=======
-        renderizarMiniMenuCats(); 
-        inicializarEventosCarrito();
-    } else {
-        await cargarDatosDesdeSheet();
-        inicializarEventosCarrito();
-    }
-
-    actualizarUiCarrito(); 
-
-    // Delay de gracia
-    setTimeout(() => {
-        const preloader = document.getElementById("ui-preloader");
-        if (preloader) preloader.classList.add("preloader-hidden");
-    }, 300);
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-    window.initSmartMenu();
->>>>>>> e178297 (🚀 Premium Migration: Restore legacy base styles, fix character encoding, and refine modal UI spacing):public/js/app.js
-});
-
-// Feature 08: Recuperador de Carrito Logic
-function recuperarCarrito() {
-    const saved = localStorage.getItem("oldwest_cart_v2");
-    if (!saved) return;
-
-    try {
-        const { data, timestamp } = JSON.parse(saved);
-        const ahora = Date.now();
-        const dosHoras = 2 * 60 * 60 * 1000;
-
-        if (ahora - timestamp < dosHoras) {
-            carrito = data;
-            console.log("🛒 Carrito recuperado de la sesión anterior.");
-            // Opcional: Podríamos mostrar un toast discreto aquí
-        } else {
-            localStorage.removeItem("oldwest_cart_v2");
-        }
-    } catch (e) {
-        console.error("Error recuperando carrito:", e);
-    }
-}
-
-function inicializarObserverLiquid() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("revelado");
-                // Una vez revelado, dejamos de observar para ahorrar recursos
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { 
-        threshold: 0.01, // Se activa con cualquier asomo de visibilidad
-        rootMargin: "0px 0px -20px 0px" 
-    });
-
-    // Pequeño delay para asegurar que el navegador ha procesado el nuevo DOM
-    setTimeout(() => {
-        const cards = document.querySelectorAll(".card-producto:not(.revelado)");
-        cards.forEach(card => observer.observe(card));
-    }, 100);
-}
-
-function toggleMiniMenúuCategorias(event) {
-    if (event) event.stopPropagation();
-    const menu = document.getElementById("mini-menu-categorias");
-    menu.classList.toggle("visible");
-}
-
-function renderizarMiniMenúuCats() {
+function renderizarMiniMenuCats() {
     const contenedor = document.getElementById("mini-menu-categorias");
     if (!contenedor) return;
 
@@ -155,12 +14,13 @@ function renderizarMiniMenúuCats() {
     else if (isSubPage) imgPrefix = "../../";
 
     const metadataCategorias = {
-        "Todos": { desc: "Explora la experiencia completa de nuestro grill.", icon: imgPrefix + "img/banner.webp" },
-        "Hamburguesas (Oferta Exclusiva)": { desc: "El mejor blend de carne con pan artesanal.", icon: imgPrefix + "img/SMASH BURGER.webp" },
-        "Cortes Premium": { desc: "Los cortes de res y cerdo más jugosos.", icon: imgPrefix + "img/TOMAHAWK ANGUS BEEF.webp" },
-        "Aves y BBQ": { desc: "Pollo y alitas marinadas al estilo Texas.", icon: imgPrefix + "img/TEXAS CHICKEN.webp" },
-        "Para Compartir": { desc: "Combos generosos para disfrutar en grupo.", icon: imgPrefix + "img/Picada Wild West.png" },
-        "Bebidas": { desc: "Selección refrescante para acompañar.", icon: imgPrefix + "img/Bebidas/LIMONADA NATURAL.avif" }
+        "Todos": { desc: "Explora la esencia de la cocina rústica italiana.", icon: imgPrefix + "img/cat_todos.png" },
+        "Entradas": { desc: "Bocados artesanales para iniciar el banquete.", icon: imgPrefix + "img/cat_entradas.png" },
+        "Pizzas Clásicas": { desc: "La tradición napolitana horneada a la leña.", icon: imgPrefix + "img/cat_pizzas_clasicas.png" },
+        "Pizzas Especiales": { desc: "Creaciones de autor con ingredientes D.O.P.", icon: imgPrefix + "img/cat_pizzas_especiales.png" },
+        "Pastas Frescas": { desc: "Hechas a mano cada mañana con amor.", icon: imgPrefix + "img/cat_pastas_frescas.png" },
+        "Postres": { desc: "Dulcemente inolvidables.", icon: imgPrefix + "img/cat_postres.png" },
+        "Bebidas": { desc: "Vinos, cervezas y jugos naturales.", icon: imgPrefix + "img/cat_bebidas.png" }
     };
 
     let html = `
@@ -205,27 +65,138 @@ function renderizarMiniMenúuCats() {
     }, 100);
 }
 
+
+/**
+ * Aplicación Principal - SmartMenúu Orders
+ * Renderiza dinámicamente la UI basándose en RESTAURANT_CONFIG y maneja el carrito.
+ */
+
+let carrito = {}; 
+let categoriaActual = "Todos"; 
+let ultimoIdAgregado = null; // Para animaciones de impacto
+function transformarLinkImagen(url) {
+    if (!url) return '';
+    if (url.includes('drive.google.com')) {
+        const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+        if (match && match[1]) {
+            return `https://drive.google.com/uc?export=view&id=${match[1]}`;
+        }
+    }
+    // Resolucion relativa segura y simple para que nunca falle en subcarpetas
+    if (url.startsWith('img/')) {
+        if (window.location.pathname.includes('/pages/')) {
+            return '../../' + url;
+        }
+        return url;
+    }
+    return url;
+}
+
+function formatoDinero(valor) {
+    return RESTAURANT_CONFIG.moneda + parseFloat(valor).toLocaleString('es-CO');
+}
+
+
+window.initSmartMenu = async () => {
+    // El Preloader.jsx ya maneja su propia animación.
+    inicializarTema();
+    
+    // Feature 08: Recuperador de Carrito
+    recuperarCarrito();
+    
+    // Only run menu-specific rendering if the menu container exists
+    const menuContainer = document.getElementById("menu-container") || document.getElementById("ui-contenedor-menu") || document.getElementById("mn-main");
+    if (menuContainer) {
+        console.log("Iniciando Renderizado de Menú...");
+        renderizarHeader();
+        mostrarSkeletons(); 
+        
+
+        await cargarDatosDesdeSheet(); 
+        
+        renderizarCategorias();
+        renderizarCarouselPromociones();
+        renderizarProductos(); 
+        inicializarObserverLiquid(); 
+        inicializarScrollProgresivo(); 
+        actualizarEstadoRestaurante(); 
+
+        renderizarMiniMenuCats(); 
+        inicializarEventosCarrito();
+    } else {
+        await cargarDatosDesdeSheet();
+        inicializarEventosCarrito();
+    }
+
+    actualizarUiCarrito(); 
+
+    // Delay de gracia
+    setTimeout(() => {
+        const preloader = document.getElementById("ui-preloader");
+        if (preloader) preloader.classList.add("preloader-hidden");
+    }, 300);
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    window.initSmartMenu();
+});
+
+// Feature 08: Recuperador de Carrito Logic
+function recuperarCarrito() {
+    const saved = localStorage.getItem("lanonna_cart_v1");
+    if (!saved) return;
+
+    try {
+        const { data, timestamp } = JSON.parse(saved);
+        const ahora = Date.now();
+        const dosHoras = 2 * 60 * 60 * 1000;
+
+        if (ahora - timestamp < dosHoras) {
+            carrito = data;
+            console.log("🛒 Carrito recuperado de la sesión anterior.");
+        } else {
+            localStorage.removeItem("lanonna_cart_v1");
+        }
+    } catch (e) {
+        console.error("Error recuperando carrito:", e);
+    }
+}
+
+function inicializarObserverLiquid() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("revelado");
+                // Una vez revelado, dejamos de observar para ahorrar recursos
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.01, // Se activa con cualquier asomo de visibilidad
+        rootMargin: "0px 0px -20px 0px" 
+    });
+
+    // Pequeño delay para asegurar que el navegador ha procesado el nuevo DOM
+    setTimeout(() => {
+        const cards = document.querySelectorAll(".card-producto:not(.revelado)");
+        cards.forEach(card => observer.observe(card));
+    }, 100);
+}
+
+function toggleMiniMenuCategorias(event) {
+    if (event) event.stopPropagation();
+    const menu = document.getElementById("mini-menu-categorias");
+    if (!menu) return;
+    menu.classList.toggle("visible");
+}
+
+
+
 function seleccionarCategoriaMini(cat) {
-<<<<<<< HEAD:js/app.js
-    categoriaActual = cat;
-    
-    // Resaltar en el mini menú si fuera necesario, pero lo más importante es renderizar
-    renderizarProductos();
-    inicializarObserverLiquid(); // Re-observar nuevos elementos
-    
-    document.getElementById("mini-menu-categorias").classList.remove("visible");
-    
-    // Scroll suave hasta el catálogo
-    const catálogo = document.getElementById("mn-grid-dinamico") || document.getElementById("menu-container") || document.getElementById("ui-contenedor-menu") || document.getElementById("mn-main");
-    if (catálogo) {
-        const rect = catálogo.getBoundingClientRect();
-        const pos = rect.top + window.scrollY - 100;
-        window.scrollTo({ top: pos, behavior: 'smooth' });
-=======
+
     if (categoriaActual === cat) {
         document.getElementById("mini-menu-categorias").classList.remove("visible");
         return;
->>>>>>> e178297 (🚀 Premium Migration: Restore legacy base styles, fix character encoding, and refine modal UI spacing):public/js/app.js
     }
     
     categoriaActual = cat;
@@ -699,8 +670,8 @@ function actualizarUiCarrito() {
         
         const precioUnitario = calcularPrecioItem(item);
 
-        // Si es Hamburguesa, entra en la bolsa del 2x1
-        if (prod.categoria && prod.categoria.includes("Hamburguesas")) {
+        // Si es Pizza Clásica, entra en la bolsa del 2x1
+        if (prod.categoria && prod.categoria.includes("Pizzas Clásicas")) {
             for (let i = 0; i < item.cantidad; i++) {
                 itemsPara2x1.push(precioUnitario);
             }
@@ -709,29 +680,23 @@ function actualizarUiCarrito() {
         }
     }
 
-<<<<<<< HEAD:js/app.js
-    // Calcular 2x1: Ordenamos de mayor a menor para cobrar las caras y regalar las baratas
+    // Calcular Subtotal con 2x1
     itemsPara2x1.sort((a, b) => b - a);
-    let total2x1 = 0;
+    let subtotal2x1 = 0;
     let ahorro2x1 = 0;
-    itemsPara2x1.forEach((precio, index) => {
-        if (index % 2 === 0) total2x1 += precio; 
-        else ahorro2x1 += precio; // Este es el ahorro
-    });
 
-    precioTotal = otrosPrecios + total2x1;
-    window.ultimoAhorro = ahorro2x1; // Guardar para UI
+    for (let i = 0; i < itemsPara2x1.length; i++) {
+        if (i % 2 === 0) {
+            subtotal2x1 += itemsPara2x1[i];
+        } else {
+            ahorro2x1 += itemsPara2x1[i];
+        }
+    }
 
-    // Feature 08: Guardar en LocalStorage
-    localStorage.setItem("oldwest_cart_v2", JSON.stringify({
-        data: carrito,
-        timestamp: Date.now()
-    }));
+    precioTotal = otrosPrecios + subtotal2x1;
 
-    const flotante = document.getElementById("btn-flotante-carrito");
-=======
+
     // const flotante = document.getElementById("btn-flotante-carrito");
->>>>>>> e178297 (🚀 Premium Migration: Restore legacy base styles, fix character encoding, and refine modal UI spacing):public/js/app.js
     const labelCant = document.getElementById("ui-cantidad-flotante");
     const labelTotal = document.getElementById("ui-total-flotante");
     const labelTotalInterior = document.getElementById("ui-total-carrito");
@@ -772,8 +737,7 @@ function actualizarUiCarrito() {
             cerrarCarrito(); 
         }
     }
-<<<<<<< HEAD:js/app.js
-=======
+
     */
     
     // Update global nav badge if exists
@@ -783,7 +747,6 @@ function actualizarUiCarrito() {
         if(cantidadTotal > 0) navBadge.style.display = 'flex';
         else navBadge.style.display = 'none';
     }
->>>>>>> e178297 (🚀 Premium Migration: Restore legacy base styles, fix character encoding, and refine modal UI spacing):public/js/app.js
 
     // Soporte para Menúu Ultra (mn-floating-cart)
     const mnFloat = document.getElementById("mn-floating-cart");
@@ -894,11 +857,11 @@ function renderizarSugerenciasCarrito() {
         catSugerida = "Para Compartir";
         tituloMsg = "🍟 ¿Algo para picar mientras tanto?";
     } else if (tieneCompartir && !tieneComida) {
-        catSugerida = "Hamburguesas (Oferta Exclusiva)";
-        tituloMsg = "🍔 ¿Cuál será tu plato fuerte?";
+        catSugerida = "Pizzas Especiales";
+        tituloMsg = "🍕 ¿Cuál será tu plato fuerte?";
     } else if (tieneBebida && !tieneComida) {
-        catSugerida = "Hamburguesas (Oferta Exclusiva)";
-        tituloMsg = "🍔 ¿Acompañamos con una buena hamburguesa?";
+        catSugerida = "Pastas Frescas";
+        tituloMsg = "🍝 ¿Acompañamos con una pasta artesanal?";
     } else {
         if (!tieneBebida) {
             catSugerida = "Bebidas";
@@ -1097,27 +1060,31 @@ document.addEventListener('input', (e) => {
     }
 });
 
-function enviarPedidoWP(event) {
+async function enviarPedidoWP(event) {
     if (event) event.preventDefault();
 
-    const metodoPago = document.getElementById("metodo-pago")?.value || "card";
+    const metodoPago = document.getElementById("metodo-pago")?.value || "efectivo";
     
-    // Validaciones básicas de tarjeta (Demo)
+    // Validaciones básicas de tarjeta (Solo si el elemento existe)
     if (metodoPago === 'card') {
         const cn = document.getElementById("card-number");
         const ce = document.getElementById("card-expiry");
         const cv = document.getElementById("card-cvv");
         let error = false;
 
-        [cn, ce, cv].forEach(el => el.classList.remove('error'));
+        if (cn || ce || cv) {
+            [cn, ce, cv].forEach(el => {
+                if (el) el.classList.remove('error');
+            });
 
-        if (cn.value.replace(/\s/g, '').length < 13) { cn.classList.add('error'); error = true; }
-        if (!ce.value.includes('/')) { ce.classList.add('error'); error = true; }
-        if (cv.value.length < 3) { cv.classList.add('error'); error = true; }
+            if (cn && cn.value.replace(/\s/g, '').length < 13) { cn.classList.add('error'); error = true; }
+            if (ce && !ce.value.includes('/')) { ce.classList.add('error'); error = true; }
+            if (cv && cv.value.length < 3) { cv.classList.add('error'); error = true; }
 
-        if (error) {
-            alert("Por favor completa los datos de la tarjeta correctamente (Modo Demostración)");
-            return;
+            if (error) {
+                alert("Por favor completa los datos de la tarjeta correctamente (Modo Demostración)");
+                return;
+            }
         }
     }
 
@@ -1126,7 +1093,7 @@ function enviarPedidoWP(event) {
     const direccion = document.getElementById("direccion-cliente")?.value.trim() || "";
     const nota = (document.getElementById("notas-pedido") || document.getElementById("ui-nota-pedido"))?.value.trim() || "";
 
-    let textoPedido = RESTAURANT_CONFIG.mensajeWP || "¡Hola! Quiero hacer el siguiente pedido:\n";
+    let textoPedido = RESTAURANT_CONFIG.mensajeWP || "¡Hola La Nonna! Quiero hacer el siguiente pedido:\n";
     
     if (nombre) textoPedido += `\n👤 *Cliente:* ${nombre}`;
     if (direccion) textoPedido += `\n📍 *Ubicación/Mesa:* ${direccion}`;
@@ -1151,28 +1118,31 @@ function enviarPedidoWP(event) {
     
     textoPedido += "------------------------\n";
     
-    // Feature 09: Propina Digital
+    // Propina Digital
     const pctPropina = parseInt(document.getElementById("propina-seleccionada")?.value || "0");
-    let montoPropina = 0;
+    let montoPropinaMsg = 0;
     if (pctPropina > 0) {
-        montoPropina = totalPrecio * (pctPropina / 100);
-        textoPedido += `\n✨ *Propina sugerida (${pctPropina}%):* ${formatoDinero(montoPropina)}`;
+        montoPropinaMsg = totalPrecio * (pctPropina / 100);
+        textoPedido += `\n✨ *Propina sugerida (${pctPropina}%):* ${formatoDinero(montoPropinaMsg)}`;
     }
 
-    const totalFinal = totalPrecio + montoPropina;
+    const totalFinal = totalPrecio + montoPropinaMsg;
     textoPedido += `\n💰 *TOTAL FINAL:* *${formatoDinero(totalFinal)}*`;
-    textoPedido += `\n💳 *Método de Pago:* ${metodoPago === 'card' ? 'Tarjeta (Demo)' : 'En Persona (Efectivo)'}\n`;
+    textoPedido += `\n💳 *Método de Pago:* ${metodoPago === 'card' ? 'Tarjeta (Simulado)' : 'En Persona (Efectivo)'}\n`;
     
     if (nota !== "") textoPedido += `\n📝 *Nota:* ${nota}`;
 
-<<<<<<< HEAD:js/app.js
-    // branching logic based on payment method
+    // WhatsApp Redirect
+    const telefono = RESTAURANT_CONFIG.telefonoWP || "573112518913";
+    const link = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(textoPedido)}`;
+
     if (metodoPago === 'card') {
         simularPagoCard();
+        // Opcional: Redirigir a WP después de 3 segundos
+        setTimeout(() => {
+            window.open(link, '_blank');
+        }, 3000);
     } else {
-        // WhatsApp Redirect
-        const telefono = RESTAURANT_CONFIG.telefonoWP || "573112518913";
-        const link = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(textoPedido)}`;
         window.open(link, '_blank');
     }
 }
@@ -1204,7 +1174,7 @@ function finalizarTodo() {
     // Limpiar carrito
     carrito = {};
     actualizarUiCarrito();
-    localStorage.removeItem("oldwest_cart_v2");
+    localStorage.removeItem("lanonna_cart_v1");
 
     // Cerrar modales
     const modalStatus = document.getElementById("modal-status");
@@ -1218,14 +1188,9 @@ function finalizarTodo() {
 async function descargarComprobante() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
-=======
-    // WhatsApp Redirect
-    const telefono = RESTAURANT_CONFIG.telefonoWP || "573112518913";
-    const link = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(textoPedido)}`;
->>>>>>> e178297 (🚀 Premium Migration: Restore legacy base styles, fix character encoding, and refine modal UI spacing):public/js/app.js
     
-    const nombre = document.getElementById("nombre-cliente")?.value || "Cliente";
-    const direccion = document.getElementById("direccion-cliente")?.value || "No especificada";
+    const nombrePDF = document.getElementById("nombre-cliente")?.value || "Cliente";
+    const direccionPDF = document.getElementById("direccion-cliente")?.value || "No especificada";
     const fecha = new Date().toLocaleString();
     
     // Intentar cargar el logo
@@ -1250,7 +1215,7 @@ async function descargarComprobante() {
     // Estilo básico
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
-    doc.text("Oldwest", 105, 50, { align: "center" });
+    doc.text("La Nonna Rústica", 105, 50, { align: "center" });
     
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
@@ -1267,12 +1232,12 @@ async function descargarComprobante() {
     doc.setFont("helvetica", "bold");
     doc.text("Cliente:", 20, 82);
     doc.setFont("helvetica", "normal");
-    doc.text(nombre, 50, 82);
+    doc.text(nombrePDF, 50, 82);
     
     doc.setFont("helvetica", "bold");
     doc.text("Dirección:", 20, 89);
     doc.setFont("helvetica", "normal");
-    doc.text(direccion, 50, 89);
+    doc.text(direccionPDF, 50, 89);
     
     doc.setFont("helvetica", "bold");
     doc.text("Estado:", 20, 96);
@@ -1310,8 +1275,8 @@ async function descargarComprobante() {
     y += 12;
     
     const propinaPct = parseInt(document.getElementById("propina-seleccionada")?.value || "0");
-    const montoPropina = total * (propinaPct / 100);
-    const totalFinal = total + montoPropina;
+    const montoPropinaPDF = total * (propinaPct / 100);
+    const totalFinalPDF = total + montoPropinaPDF;
     
     doc.setFont("helvetica", "bold");
     doc.text("SUBTOTAL:", 130, y);
@@ -1322,21 +1287,21 @@ async function descargarComprobante() {
     doc.setFont("helvetica", "bold");
     doc.text(`PROPINA (${propinaPct}%):`, 130, y);
     doc.setFont("helvetica", "normal");
-    doc.text(formatoDinero(montoPropina), 170, y);
+    doc.text(formatoDinero(montoPropinaPDF), 170, y);
     y += 8;
     
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
     doc.text("TOTAL FINAL:", 130, y);
-    doc.text(formatoDinero(totalFinal), 170, y);
+    doc.text(formatoDinero(totalFinalPDF), 170, y);
     
     y += 20;
     doc.setFontSize(10);
     doc.setFont("helvetica", "italic");
     doc.text("Este es un comprobante de simulación para la demostración del sistema de pagos.", 105, y, { align: "center" });
-    doc.text("¡Gracias por preferir la experiencia artesanal de Oldwest!", 105, y + 5, { align: "center" });
+    doc.text("¡Gracias por preferir la experiencia artesanal de La Nonna!", 105, y + 5, { align: "center" });
 
-    doc.save(`Comprobante_Oldwest_${Date.now()}.pdf`);
+    doc.save(`Comprobante_LaNonna_${Date.now()}.pdf`);
 }
 
 // ==========================================
@@ -1387,7 +1352,7 @@ async function cargarDatosDesdeSheet() {
             mods: cabecera.findIndex(h => h.includes("modificadores"))
         };
 
-        const RESTAURANT_ID = (window.RESTAURANT_CONFIG && RESTAURANT_CONFIG.id) ? RESTAURANT_CONFIG.id : "oldwest"; 
+        const RESTAURANT_ID = (window.RESTAURANT_CONFIG && RESTAURANT_CONFIG.id) ? RESTAURANT_CONFIG.id : "lanonnarustica"; 
         const RID_BUSCADO = RESTAURANT_ID.toString().toLowerCase().trim();
 
         const limpiarPrecio = (val) => {
@@ -1728,206 +1693,7 @@ function inicializarEventosCarrito() {
     if (formPedido) {
         formPedido.onsubmit = enviarPedidoWP;
     }
-<<<<<<< HEAD:js/app.js
-});
-// Feature 09: Helper Propina
-function seleccionarPropina(valor, btn) {
-    const hiddenInput = document.getElementById("propina-seleccionada");
-    if (!hiddenInput) return;
 
-    hiddenInput.value = valor;
-
-    // Resetear chips (Soporta ambos estilos)
-    document.querySelectorAll(".propina-chip, .propina-premium-chip").forEach(chip => {
-        chip.classList.remove("activa");
-    });
-
-    // Activar el seleccionado
-    btn.classList.add("activa");
-}
-
-// Feature 17: Especial del Día
-function renderizarEspecialDia() {
-    const contenedor = document.getElementById("ui-especial-dia-container");
-    if (!contenedor) return;
-
-    // Lógica por día de la semana (0=Dom, 1=Lun...)
-    const dia = new Date().getDay();
-    const especiales = [
-        401, // Domingo: Picada Wild West
-        201, // Lunes: Tomahawk Angus Beef
-        101, // Martes: Smash Burger
-        102, // Miércoles: Dallas Burger
-        301, // Jueves: Texas Chicken
-        302, // Viernes: Grilled Chicken
-        202  // Sábado: New York Steak Beef
-    ];
-
-    // Intentamos buscar un producto que tenga "Especial" en la categoría o usar el mapa
-    const idBuscado = especiales[dia];
-    const prod = obtenerProducto(idBuscado);
-    
-    if (!prod || prod.nombre === "No encontrado") {
-        // Fallback si los IDs no coinciden: buscar la primera hamburguesa
-        const fallback = RESTAURANT_CONFIG.productos.find(p => p.categoria.includes("Hamburguesas"));
-        if (!fallback) return;
-        mostrarEspecialHtml(fallback, contenedor);
-    } else {
-        mostrarEspecialHtml(prod, contenedor);
-    }
-}
-
-function mostrarEspecialHtml(prod, contenedor) {
-    contenedor.innerHTML = `
-        <div class="chef-special-card ultra-reveal" 
-             style="cursor: pointer;"
-             onclick="const p = obtenerProducto('${prod.id}'); if(window.openProductSheet) { window.openProductSheet(p); } else { abrirModalProducto('${prod.id}'); }">
-            <div class="special-badge">CREACIÓN DEL DÍA</div>
-            <div class="special-content-split">
-                <div class="special-img-side">
-                    <img src="${transformarLinkImagen(prod.imagen)}" alt="${prod.nombre}">
-                </div>
-                <div class="special-text-side">
-                    <p class="special-overline">Recomendación del Chef</p>
-                    <h2 class="special-title">${prod.nombre}</h2>
-                    <p class="special-desc">${prod.descripcion}</p>
-                    <div class="special-price-row">
-                        <span class="special-price">${formatoDinero(prod.precio)}</span>
-                        <button class="btn-special-add">
-                            ¡Lo quiero! <i class="fas fa-magic"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Estilos inyectados para el especial (Premium Editorial)
-    if (!document.getElementById('special-styles')) {
-        const style = document.createElement('style');
-        style.id = 'special-styles';
-        style.textContent = `
-            .chef-special-card {
-                background: #131110;
-                border: 1px solid rgba(255,255,255,0.06);
-                border-radius: 16px;
-                margin-bottom: 1.5rem; 
-                width: 100%;
-                overflow: hidden;
-                position: relative;
-                box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-                transition: all 0.4s ease;
-            }
-            .chef-special-card:hover {
-                border-color: var(--c-brand);
-                transform: translateY(-3px);
-            }
-            .special-badge {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                background: var(--c-brand);
-                color: white;
-                padding: 3px 10px;
-                font-family: 'Outfit', sans-serif;
-                font-size: 0.55rem;
-                font-weight: 800;
-                letter-spacing: 1.5px;
-                border-radius: 4px;
-                z-index: 5;
-            }
-            .special-content-split {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-            }
-            .special-img-side {
-                width: 100%; 
-                height: 120px; /* Altura muy reducida */
-                overflow: hidden;
-            }
-            .special-img-side img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                transition: transform 0.6s ease;
-            }
-            .chef-special-card:hover .special-img-side img {
-                transform: scale(1.1);
-            }
-            .special-text-side {
-                width: 100%;
-                padding: 1rem; /* Padding más ajustado */
-            }
-            .special-overline {
-                color: var(--c-brand);
-                font-family: 'Outfit', sans-serif;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                font-size: 0.6rem;
-                margin-bottom: 0.4rem;
-                font-weight: 700;
-            }
-            .special-title {
-                font-family: var(--f-title);
-                font-size: 1.1rem; /* Tamaño más compacto */
-                margin-bottom: 0.4rem;
-                line-height: 1.2;
-                color: white;
-            }
-            .special-desc {
-                color: rgba(255,255,255,0.4);
-                font-family: var(--f-italic);
-                font-style: italic;
-                font-size: 0.8rem;
-                margin-bottom: 1rem;
-                line-height: 1.3;
-                display: -webkit-box;
-                -webkit-line-clamp: 2; /* Limitar a 2 líneas para ahorrar espacio Y */
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .special-price-row {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 1rem;
-            }
-            .special-price {
-                font-family: var(--f-body);
-                font-size: 1.1rem;
-                font-weight: 700;
-                color: white;
-            }
-            .btn-special-add {
-                background: var(--c-brand);
-                color: white;
-                border: none;
-                padding: 0.6rem 1rem;
-                border-radius: 8px;
-                font-family: 'Outfit', sans-serif;
-                font-weight: 700;
-                cursor: pointer;
-                transition: all 0.3s;
-                display: flex;
-                align-items: center;
-                gap: 6px;
-                font-size: 0.75rem;
-            }
-            .btn-special-add:hover {
-                background: #e61929;
-                transform: scale(1.05);
-            }
-
-            @media (max-width: 768px) {
-                .special-img-side { height: 160px; }
-                .special-price-row { flex-direction: row; }
-                .btn-special-add { width: auto; }
-            }
-        `;
-        document.head.appendChild(style);
-    }
-=======
 
     // 3. Botones de cerrar modal (delegación para mayor seguridad)
     document.addEventListener('click', (e) => {
@@ -1947,5 +1713,4 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', inicializarEventosCarrito);
 } else {
     inicializarEventosCarrito();
->>>>>>> e178297 (🚀 Premium Migration: Restore legacy base styles, fix character encoding, and refine modal UI spacing):public/js/app.js
 }
