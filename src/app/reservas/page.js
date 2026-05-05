@@ -1,5 +1,5 @@
 /* =========================================================
-   RESERVAS PREMIUM $10K - LA NONNA RÚSTICA (LEGACY PORT)
+   RESERVAS PREMIUM $10K - URBAN GRILL
    ========================================================= */
 "use client";
 
@@ -167,7 +167,7 @@ export default function ReservasPage() {
 
         let textoWP = `🌟 *NUEVA SOLICITUD DE RESERVA* 🌟\n`;
         textoWP += `------------------------------------------\n`;
-        textoWP += `🏛️ *Restaurante:* La Nonna Rústica\n\n`;
+        textoWP += `🏛️ *Restaurante:* Urban Grill\n\n`;
         textoWP += `👤 *Anfitrión:* ${nombre}\n`;
         textoWP += `📅 *Fecha:* ${fecha}\n`;
         textoWP += `⏰ *Hora:* ${hora}\n`;
@@ -176,7 +176,7 @@ export default function ReservasPage() {
         textoWP += `------------------------------------------\n`;
         textoWP += `✨ _Solicito amablemente confirmar disponibilidad para esta velada. Quedo atento a su respuesta._`;
 
-        const num = (window.RESTAURANT_CONFIG?.telefonoWP) ? window.RESTAURANT_CONFIG.telefonoWP : "573112518913";
+        const num = (window.RESTAURANT_CONFIG?.telefonoWP) ? window.RESTAURANT_CONFIG.telefonoWP : "573153368179";
         const link = `https://api.whatsapp.com/send?phone=${num}&text=${encodeURIComponent(textoWP)}`;
         window.open(link, '_blank');
       });
@@ -194,7 +194,7 @@ export default function ReservasPage() {
       <header className="res-hero">
         <div className="res-hero-bg"></div>
         <div className="res-hero-content">
-          <h1 className="gsap-hero-title">La Mesa de la Nonna</h1>
+          <h1 className="gsap-hero-title">La Mesa de Urban Grill</h1>
           <p className="gsap-hero-subtitle">Una experiencia gastronómica exclusiva</p>
         </div>
       </header>
@@ -205,7 +205,7 @@ export default function ReservasPage() {
           <div className="booking-grid">
             <div className="booking-info">
               <h2>Tu Velada Ideal</h2>
-              <p>Déjanos el honor de prepararte una mesa perfecta. En La Nonna Rústica, cada reserva es una promesa de calidad, sabor y hospitalidad italiana auténtica.</p>
+              <p>Déjanos el honor de prepararte una mesa perfecta. En Urban Grill, cada reserva es una promesa de calidad, cortes premium y el auténtico sabor de la brasa urbana.</p>
               
               <div style={{ marginTop: '2rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
@@ -214,11 +214,7 @@ export default function ReservasPage() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                   <span style={{ color: 'var(--res-gold)', fontSize: '1.1rem', fontWeight: 800 }}>[II]</span>
-                  <span>Cava de vinos seleccionada</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <span style={{ color: 'var(--res-gold)', fontSize: '1.1rem', fontWeight: 800 }}>[III]</span>
-                  <span>Atención personalizada del Chef</span>
+                  <span>Cortes de autor y braseado perfecto</span>
                 </div>
               </div>
             </div>
@@ -312,14 +308,14 @@ export default function ReservasPage() {
             <img src="/img/logo.png" alt="Logo" className="footer-logo-img" style={{ margin: '0 auto' }} />
           </div>
           <p style={{ fontFamily: 'var(--fuente-titulos)', fontSize: '1.5rem', margin: '2rem 0', color: 'var(--res-gold)' }}>
-            "La verdadera esencia de Italia en cada bocado."
+            "El sabor de la brasa en su estado más puro."
           </p>
           <div className="footer-tech" style={{ color: 'rgba(255,255,255,0.6)' }}>
             <p>Digital Experience Crafted by:</p>
             <span style={{ fontWeight: 800, fontSize: '1.2rem', color: 'white' }}>Samuel Portilla</span>
           </div>
           <div style={{ marginTop: '3rem', opacity: 0.3 }}>
-            &copy; 2026 LA NONNA RÚSTICA.<br />
+            &copy; 2026 URBAN GRILL.<br />
             Arquitectura Digital Premium por Samuel Andres Portilla Ardila.
           </div>
         </div>

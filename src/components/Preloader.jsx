@@ -27,11 +27,11 @@ export default function Preloader() {
   return (
     <div id="ui-preloader" className="preloader">
       <div className="preloader-content">
-        <img src="/img/logo.png" alt="La Nonna Logo" className="logo-preloader" />
+        <img src="/img/logo.jpg" alt="Urban Grill Logo" className="logo-preloader" />
         <div className="preloader-bar">
           <div className="preloader-progress" />
         </div>
-        <p className="preloader-text">Encendiendo el horno de leña...</p>
+        <p className="preloader-text">Calentando la parrilla urbana...</p>
       </div>
     </div>
   );

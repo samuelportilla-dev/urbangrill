@@ -58,23 +58,23 @@ export default function NosotrosPage() {
       {/* 10x Editorial Hero */}
       <header className="hero-editorial">
         <img
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1920&auto=format&fit=crop"
+          src="img/nosotros-hero.png"
           className="hero-editorial-img"
-          alt="La Nonna Rústica Interior"
+          alt="Hamburguesa premium Urban Grill"
         />
         <div className="hero-editorial-content reveal">
-          <span className="editorial-subtitle">Genuino &amp; Intacto</span>
-          <h1 className="editorial-title">Paciencia.<br />Harina.<br />Fuego.</h1>
-          <p className="hero-editorial-p">No hemos cambiado una sola receta en 90 años. Porque la prisa es el enemigo de lo excepcional.</p>
+          <span className="editorial-subtitle">Auténtico &amp; Urbano</span>
+          <h1 className="editorial-title">Fuego.<br />Carne.<br />Barrio.</h1>
+          <p className="hero-editorial-p">En Urban Grill, el sabor se forja en la brasa. Nacimos con la misión de elevar la comida callejera a una experiencia premium.</p>
         </div>
       </header>
 
       {/* Métricas Heroicas */}
       <section className="heritage-stats">
-        <div className="stat-item reveal"><h3>72</h3><p>Horas de Fermentación Lenta</p></div>
-        <div className="stat-item reveal" style={{ transitionDelay: '0.1s' }}><h3>450°C</h3><p>Fuego Vivo Constante</p></div>
-        <div className="stat-item reveal" style={{ transitionDelay: '0.2s' }}><h3>90s</h3><p>Tiempo de Cocción Exacto</p></div>
-        <div className="stat-item reveal" style={{ transitionDelay: '0.3s' }}><h3>1</h3><p>Sola Masa Madre Viva</p></div>
+        <div className="stat-item reveal"><h3>100%</h3><p>Carne Premium Certificada</p></div>
+        <div className="stat-item reveal" style={{ transitionDelay: '0.1s' }}><h3>Braseado</h3><p>Carbón de Roble Seleccionado</p></div>
+        <div className="stat-item reveal" style={{ transitionDelay: '0.2s' }}><h3>Barrio</h3><p>Sabor Auténtico de San Luis</p></div>
+        <div className="stat-item reveal" style={{ transitionDelay: '0.3s' }}><h3>Local</h3><p>Ingredientes Siempre Frescos</p></div>
       </section>
 
       {/* History Timeline */}
@@ -82,54 +82,54 @@ export default function NosotrosPage() {
         {/* Desktop Sticky Image Column */}
         <div className="history-img-col">
           <div className="history-img-wrapper active-img" id="img-1924">
-            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800&auto=format&fit=crop" alt="1924" />
+            <img src="img/historia-2018.png" alt="2018 - El Primer Fuego" />
           </div>
           <div className="history-img-wrapper" id="img-1960">
-            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop" alt="1960" />
+            <img src="img/historia-2020.png" alt="2020 - La Parrilla se Enciende" />
           </div>
           <div className="history-img-wrapper" id="img-2003">
-            <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?q=80&w=800&auto=format&fit=crop" alt="2003" />
+            <img src="img/historia-2023.png" alt="2023 - Consolidación Urbana" />
           </div>
           <div className="history-img-wrapper" id="img-hoy">
-            <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800&auto=format&fit=crop" alt="Hoy" />
+            <img src="img/historia-hoy.png" alt="Hoy - La Experiencia Grill" />
           </div>
         </div>
 
         <div className="history-text-col">
           <div className="history-node" data-target="img-1924">
-            <span className="history-year mobile-reveal">1924</span>
-            <h2 className="mobile-reveal">El Principio del Cultivo</h2>
+            <span className="history-year mobile-reveal">2018</span>
+            <h2 className="mobile-reveal">El Primer Fuego</h2>
             <div className="mobile-img-container mobile-reveal">
-              <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800&auto=format&fit=crop" alt="1924" />
+              <img src="img/historia-2018.png" alt="2018" />
             </div>
-            <p className="mobile-reveal">En el corazón de Nápoles, el Bisabuelo Vincenzo comienza a cultivar nuestro <em>Lievito Madre</em>. Esta exactamente misma levadura ha sido alimentada y dividida diariamente por cuatro generaciones. No es levadura comercial; es una entidad que respira y vive bajo nuestro techo.</p>
+            <p className="mobile-reveal">Todo comenzó en un garaje de San Luis. Nuestra pasión por la parrilla nos llevó a experimentar con diferentes tipos de carbón y cortes de carne, buscando ese sabor ahumado que recordábamos de las reuniones familiares.</p>
           </div>
 
           <div className="history-node" data-target="img-1960">
-            <span className="history-year mobile-reveal">1960</span>
-            <h2 className="mobile-reveal">La Expansión a Colombia</h2>
+            <span className="history-year mobile-reveal">2020</span>
+            <h2 className="mobile-reveal">La Parrilla se Enciende</h2>
             <div className="mobile-img-container mobile-reveal">
-              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop" alt="1960" />
+              <img src="img/historia-2020.png" alt="2020" />
             </div>
-            <p className="mobile-reveal">Nuestra familia cruza el Atlántico trayendo consigo no solo recetas, sino un jarrón de terracota protegido térmicamente donde viajaba la masa madre. Abrimos nuestro primer horno de leña en Cúcuta, fusionando la técnica italiana con la leña de roble local.</p>
+            <p className="mobile-reveal">En medio de los desafíos, decidimos abrir nuestro primer local oficial. La respuesta del barrio fue inmediata: la gente buscaba algo más que comida rápida, buscaba sabor real hecho con respeto.</p>
           </div>
 
           <div className="history-node" data-target="img-2003">
-            <span className="history-year mobile-reveal">2003</span>
-            <h2 className="mobile-reveal">La Evolución Táctica</h2>
+            <span className="history-year mobile-reveal">2023</span>
+            <h2 className="mobile-reveal">Consolidación Urbana</h2>
             <div className="mobile-img-container mobile-reveal">
-              <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?q=80&w=800&auto=format&fit=crop" alt="2003" />
+              <img src="img/historia-2023.png" alt="2023" />
             </div>
-            <p className="mobile-reveal">Construimos desde cero 'Il Mostro', nuestro majestuoso Horno Pavesi con piedra refractaria del Vesubio. Importar los materiales duró 6 meses, y su primer encendido fue curado con una mezcla de maderas frutales para templar la cúpula interior.</p>
+            <p className="mobile-reveal">Urban Grill se convirtió en un referente. Incorporamos nuestras famosas salchipapas premium y las chinchurrias criollas que hoy son leyenda, manteniendo siempre el carbón como el corazón de nuestra cocina.</p>
           </div>
 
           <div className="history-node" data-target="img-hoy">
             <span className="history-year mobile-reveal">Hoy</span>
-            <h2 className="mobile-reveal">La Auténtica Rústica</h2>
+            <h2 className="mobile-reveal">La Experiencia Grill</h2>
             <div className="mobile-img-container mobile-reveal">
-              <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800&auto=format&fit=crop" alt="Hoy" />
+              <img src="img/historia-hoy.png" alt="Hoy" />
             </div>
-            <p className="mobile-reveal">Crecimos, pero nuestro manifiesto sigue intacto: Sin cortadores mecánicos, sin harinas procesadas industrialmente. Cada pizza que sale de nuestra cocina es un testimonio de resistencia culinaria frente a la era del congelado.</p>
+            <p className="mobile-reveal">Seguimos aquí, en Av 2 calle 12, honrando nuestras raíces urbanas. Sin atajos, sin carne congelada, solo fuego y pasión por lo que hacemos.</p>
           </div>
         </div>
       </section>
@@ -140,7 +140,7 @@ export default function NosotrosPage() {
           <svg className="philosophy-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#F77F00" strokeWidth="2">
             <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
           </svg>
-          <h2 className="philosophy-quote">"En Italia, la comida no es una necesidad, es teatro, poesía y religión combinadas."</h2>
+          <h2 className="philosophy-quote">"El secreto de una gran parrillada no es solo el fuego, es el alma que le pones al carbón."</h2>
           <Link href="/menu" className="btn-nav-reserva philosophy-btn">Conoce Nuestro Arte</Link>
         </div>
       </div>

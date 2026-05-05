@@ -71,8 +71,8 @@ export default function GlobalNav({ activeLink = '' }) {
       <nav className="global-nav">
         <div className="global-nav-container">
           <Link href="/" className="global-nav-logo">
-            <img src="/img/logo.png" alt="Logo" />
-            LA NONNA RÚSTICA
+            <img src="/img/logo.jpg" alt="Logo" />
+            URBAN GRILL
           </Link>
 
           <div className="global-nav-links">

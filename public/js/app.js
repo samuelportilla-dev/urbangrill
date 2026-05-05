@@ -14,13 +14,12 @@ function renderizarMiniMenuCats() {
     else if (isSubPage) imgPrefix = "../../";
 
     const metadataCategorias = {
-        "Todos": { desc: "Explora la esencia de la cocina rústica italiana.", icon: imgPrefix + "img/cat_todos.png" },
-        "Entradas": { desc: "Bocados artesanales para iniciar el banquete.", icon: imgPrefix + "img/cat_entradas.png" },
-        "Pizzas Clásicas": { desc: "La tradición napolitana horneada a la leña.", icon: imgPrefix + "img/cat_pizzas_clasicas.png" },
-        "Pizzas Especiales": { desc: "Creaciones de autor con ingredientes D.O.P.", icon: imgPrefix + "img/cat_pizzas_especiales.png" },
-        "Pastas Frescas": { desc: "Hechas a mano cada mañana con amor.", icon: imgPrefix + "img/cat_pastas_frescas.png" },
-        "Postres": { desc: "Dulcemente inolvidables.", icon: imgPrefix + "img/cat_postres.png" },
-        "Bebidas": { desc: "Vinos, cervezas y jugos naturales.", icon: imgPrefix + "img/cat_bebidas.png" }
+        "Todos": { desc: "Lo mejor de nuestra parrilla urbana.", icon: imgPrefix + "img/logo.jpg" },
+        "Hamburguesas": { desc: "Carne premium en pan brioche artesanal.", icon: imgPrefix + "img/Hamburguesa la del Barrio.webp" },
+        "Salchipapas": { desc: "La combinación perfecta de sabor y textura.", icon: imgPrefix + "img/Salchipapa Urban Chicken.webp" },
+        "Perros Calientes": { desc: "Sabor callejero con un toque premium.", icon: imgPrefix + "img/Perro el Callejero.webp" },
+        "Chinchurrias": { desc: "Crocantes y doradas al estilo criollo.", icon: imgPrefix + "img/Chinchurria Criolla.webp" },
+        "Bebidas": { desc: "Refrescantes jugos y cervezas frías.", icon: imgPrefix + "img/Bebidas/LIMONADA NATURAL.avif" }
     };
 
     let html = `
@@ -145,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Feature 08: Recuperador de Carrito Logic
 function recuperarCarrito() {
-    const saved = localStorage.getItem("lanonna_cart_v1");
+    const saved = localStorage.getItem("urbangrill_cart_v1");
     if (!saved) return;
 
     try {
@@ -157,7 +156,7 @@ function recuperarCarrito() {
             carrito = data;
             console.log("🛒 Carrito recuperado de la sesión anterior.");
         } else {
-            localStorage.removeItem("lanonna_cart_v1");
+            localStorage.removeItem("urbangrill_cart_v1");
         }
     } catch (e) {
         console.error("Error recuperando carrito:", e);
@@ -531,28 +530,34 @@ function renderizarProductos() {
             
             // Lógica de Badges
             let badgeHtml = "";
-            if (prod.etiquetas && prod.etiquetas.length > 0) {
-                // If the product has explicit 'etiquetas', render them
-                badgeHtml = prod.etiquetas.map((et, idx) => {
-                    // Assign alternating colors based on index for variety
-                    const cls = idx % 2 === 0 ? "tag-hot" : "tag-favorito";
+            const labelsExplicitos = prod.etiquetas || (prod.etiqueta ? [prod.etiqueta] : []);
+
+            if (labelsExplicitos.length > 0) {
+                // Si el producto tiene etiquetas explícitas, las renderizamos
+                badgeHtml = labelsExplicitos.map((et, idx) => {
+                    const etLower = et.toLowerCase();
+                    let cls = "tag-hot";
+                    if (etLower.includes("favorito")) cls = "tag-favorito";
+                    else if (etLower.includes("veggie")) cls = "tag-veggie";
+                    
                     return `<div class="badge-tag ${cls}" style="position:relative; top:0; left:0; margin-bottom:4px;">${et}</div>`;
                 }).join("");
-                // Wrap in a container if there are multiple, to handle flow
-                if (prod.etiquetas.length > 1) {
+
+                if (labelsExplicitos.length > 1) {
                     badgeHtml = `<div style="display:flex; flex-direction:column; gap:4px; position:absolute; top:12px; left:12px; z-index:10;">${badgeHtml}</div>`;
                 } else {
                     badgeHtml = `<div style="position:absolute; top:12px; left:12px; z-index:10;">${badgeHtml}</div>`;
                 }
             } else {
+                // Lógica automática solo si no hay etiquetas explícitas
                 const nombreLower = prod.nombre.toLowerCase();
                 const descLower = (prod.descripcion || "").toLowerCase();
 
-                if (nombreLower.includes("especial") || descLower.includes("casa") || descLower.includes("recomendado")) {
+                if (nombreLower.includes("especial") || descLower.includes("recomendado") || descLower.includes("insignia")) {
                     badgeHtml = `<div class="badge-tag tag-favorito">⭐ Favorito</div>`;
                 } else if (nombreLower.includes("veggie") || descLower.includes("vegan") || descLower.includes("vegetariana")) {
                     badgeHtml = `<div class="badge-tag tag-veggie">🌱 Veggie</div>`;
-                } else if (prod.precioOriginal > 50000 || descLower.includes("pedido")) {
+                } else if (prod.precioOriginal > 50000 || descLower.includes("más vendido")) {
                     badgeHtml = `<div class="badge-tag tag-hot">🔥 Más Pedido</div>`;
                 }
             }
@@ -843,16 +848,16 @@ function renderizarSugerenciasCarrito() {
     // 1. Definir prioridades de sugerencia según el estado del carrito
     const prioridades = [];
     if (tieneComida && !tieneBebida) {
-        prioridades.push({ cat: "Bebidas", msg: "🥤 ¿Acompa\u00f1amos con una bebida?" });
+        prioridades.push({ cat: "Bebidas", msg: "🥤 ¿Acompañamos con una bebida fría?" });
     }
     if (tieneComida && !tieneCompartir) {
-        prioridades.push({ cat: "Entradas", msg: "🍟 ¿Algo para picar mientras tanto?" });
+        prioridades.push({ cat: "Chinchurrias", msg: "🔥 ¿Unas chinchurrias para el centro?" });
     }
     if (tieneCompartir && !tieneComida) {
-        prioridades.push({ cat: "Pizzas Especiales", msg: "🍕 ¿Cuál será tu plato fuerte?" });
+        prioridades.push({ cat: "Hamburguesas", msg: "🍔 ¿Cuál será tu plato fuerte?" });
     }
     if (tieneBebida && !tieneComida) {
-        prioridades.push({ cat: "Pastas Frescas", msg: "🍝 ¿Acompa\u00f1amos con una pasta artesanal?" });
+        prioridades.push({ cat: "Salchipapas", msg: "🍟 ¿Acompañamos con una Urban Chicken?" });
     }
     // El postre siempre es una buena prioridad final
     prioridades.push({ cat: "Postres", msg: "🍰 ¿Cerramos con algo dulce?" });
@@ -1120,7 +1125,7 @@ async function enviarPedidoWP(event) {
         return;
     }
 
-    let textoPedido = RESTAURANT_CONFIG.mensajeWP || "¡Hola La Nonna! Quiero hacer el siguiente pedido:\n";
+    let textoPedido = RESTAURANT_CONFIG.mensajeWP || "¡Hola Urban Grill! Quiero hacer el siguiente pedido:\n";
     
     if (nombre) textoPedido += `\n👤 *Cliente:* ${nombre}`;
     if (direccion) textoPedido += `\n📍 *Ubicación/Mesa:* ${direccion}`;
@@ -1242,7 +1247,7 @@ async function descargarComprobante() {
     // Estilo básico
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
-    doc.text("La Nonna Rústica", 105, 50, { align: "center" });
+    doc.text("Urban Grill", 105, 50, { align: "center" });
     
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
@@ -1326,9 +1331,9 @@ async function descargarComprobante() {
     doc.setFontSize(10);
     doc.setFont("helvetica", "italic");
     doc.text("Este es un comprobante de simulación para la demostración del sistema de pagos.", 105, y, { align: "center" });
-    doc.text("¡Gracias por preferir la experiencia artesanal de La Nonna!", 105, y + 5, { align: "center" });
+    doc.text("¡Gracias por preferir el sabor auténtico de Urban Grill!", 105, y + 5, { align: "center" });
 
-    doc.save(`Comprobante_LaNonna_${Date.now()}.pdf`);
+    doc.save(`Comprobante_UrbanGrill_${Date.now()}.pdf`);
 }
 
 // ==========================================
@@ -1379,7 +1384,7 @@ async function cargarDatosDesdeSheet() {
             mods: cabecera.findIndex(h => h.includes("modificadores"))
         };
 
-        const RESTAURANT_ID = (window.RESTAURANT_CONFIG && RESTAURANT_CONFIG.id) ? RESTAURANT_CONFIG.id : "lanonnarustica"; 
+        const RESTAURANT_ID = (window.RESTAURANT_CONFIG && RESTAURANT_CONFIG.id) ? RESTAURANT_CONFIG.id : "urbangrill"; 
         const RID_BUSCADO = RESTAURANT_ID.toString().toLowerCase().trim();
 
         const limpiarPrecio = (val) => {

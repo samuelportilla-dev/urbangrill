@@ -82,7 +82,7 @@ export default function MenuPage() {
                 <input
                   type="text"
                   id="menu-search-input"
-                  placeholder="Buscar mi pizza, entrada o bebida..."
+                  placeholder="Buscar mi hamburguesa, salchipapa o bebida..."
                   onKeyUp={(e) => { if (window.ejecutarBusqueda) window.ejecutarBusqueda(e.target.value); }}
                 />
                 <button

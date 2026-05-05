@@ -4,12 +4,12 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-8 flex flex-wrap justify-between text-left gap-8">
         {/* Brand */}
         <div className="flex-1 min-w-[300px]">
-          <img src="/img/logo.png" alt="Logo" className="footer-logo-img ml-0" />
+          <img src="/img/logo.jpg" alt="Logo" className="footer-logo-img ml-0" />
           <p
             className="footer-slogan mb-4"
             style={{ fontFamily: 'var(--fuente-titulos)', fontSize: '1.8rem' }}
           >
-            La verdadera esencia de la cocina rústica en tu mesa.
+            El auténtico sabor de la parrilla urbana.
           </p>
         </div>
 
@@ -21,9 +21,9 @@ export default function Footer() {
           >
             Contacto Directo
           </h3>
-          <p className="mb-2 text-lg">📍 Av. 0 #12-55, Barrio Caobos, Cúcuta</p>
-          <p className="mb-2 text-lg">📞 Reservas: +57 311 251 8913</p>
-          <p className="mb-2 text-lg">✉️ gerencia@lanonnarustica.com</p>
+          <p className="mb-2 text-lg">📍 Av 2 calle 12 barrio San Luis</p>
+          <p className="mb-2 text-lg">📞 Pedidos: +57 315 336 8179</p>
+          <p className="mb-2 text-lg">✉️ gerencia@urbangrill.com</p>
         </div>
 
         {/* Horario */}
@@ -35,13 +35,7 @@ export default function Footer() {
             Horario de Fuego
           </h3>
           <p className="mb-2 text-lg">
-            Lunes: <span className="opacity-60">Cerrado por fermentación</span>
-          </p>
-          <p className="mb-2 text-lg">
-            Martes a Sábado: <span className="font-bold">11:00am - 10:30pm</span>
-          </p>
-          <p className="mb-2 text-lg">
-            Domingos: <span className="font-bold">12:00pm - 09:00pm</span>
+            Lunes a Domingo: <span className="font-bold">12:00pm - 11:00pm</span>
           </p>
         </div>
       </div>
@@ -49,7 +43,7 @@ export default function Footer() {
       {/* Copyright */}
       <div className="mt-16 border-t border-white/10 pt-8 text-white/40 text-center">
         <p>
-          &copy; 2026 LA NONNA RÚSTICA ITALIANA.<br />
+          &copy; 2026 URBAN GRILL.<br />
           Arquitectura Digital Premium por Samuel Andres Portilla Ardila.
         </p>
       </div>

@@ -52,10 +52,10 @@ export default function Home() {
 
       {/* Hero Section Brutal */}
       <header className="hero-10k">
-        <div className="hero-10k-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=1920&auto=format&fit=crop')" }}></div>
+        <div className="hero-10k-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1920&auto=format&fit=crop')" }}></div>
         <div className="hero-10k-content reveal">
-          <h1>L'Arte della Pizza</h1>
-          <p className="hero-desc">Fermentación lenta de 72 horas. Ingredientes importados de Nápoles. Una experiencia magistral en cada bocado.</p>
+          <h1>La Parrilla Urbana</h1>
+          <p className="hero-desc">Carnes premium asadas al carbón, hamburguesas de autor y el sabor auténtico de San Luis en cada bocado.</p>
           <div className="hero-actions">
             <Link href="/menu" className="hero-cta">Explorar Menú</Link>
             <Link href="/reservas" className="hero-cta btn-reservar-hero">Reservar</Link>
@@ -66,21 +66,21 @@ export default function Home() {
       {/* Marquee Infinito de Alto Impacto */}
       <div className="marquee-container">
         <div className="marquee-content">
-          <span className="filled">Masa Madre Viva</span> <span>•</span> <span>Horno a 450°C</span> <span>•</span> <span className="filled">Auténtica Napolitana</span> <span>•</span> <span>Tomate San Marzano</span> <span>•</span>
-          <span className="filled">Masa Madre Viva</span> <span>•</span> <span>Horno a 450°C</span> <span>•</span> <span className="filled">Auténtica Napolitana</span> <span>•</span> <span>Tomate San Marzano</span> <span>•</span>
+          <span className="filled">Carne Premium</span> <span>•</span> <span>Brasas al Carbón</span> <span>•</span> <span className="filled">Pan Artesanal</span> <span>•</span> <span>Sabor Criollo</span> <span>•</span>
+          <span className="filled">Carne Premium</span> <span>•</span> <span>Brasas al Carbón</span> <span>•</span> <span className="filled">Pan Artesanal</span> <span>•</span> <span>Sabor Criollo</span> <span>•</span>
         </div>
       </div>
 
       {/* Overlapping Structure 1 */}
       <section className="overlap-section reveal" style={{ marginTop: '5rem' }}>
         <div className="overlap-img">
-          <img src="https://images.unsplash.com/photo-1594007654729-407eedc4be65?q=80&w=1000&auto=format&fit=crop" alt="Horno de leña rústico napolitano" />
+          <img src="img/carbon-roble.png" alt="Parrilla profesional con carbón de roble" />
         </div>
         <div className="overlap-text">
-          <span className="subtitle">La Tradición de Fuego</span>
-          <h2>Nuestro Horno Pavesi</h2>
-          <p>Traído directamente de las laderas del Vesubio, nuestro horno de piedra volcánica es el corazón palpitante de La Nonna. Alcanza temperaturas superiores a los 450°C, sellando los ingredientes en apenas 90 segundos para garantizar una costra perfectamente inflada y tostada ('cornicione'), mientras su centro permanece peligrosamente suave.</p>
-          <p>No usamos gas. Utilizamos exclusivamente leña de roble envejecida, la cual aporta notas sutilmente ahumadas imposibles de replicar con métodos modernos.</p>
+          <span className="subtitle">La Maestría de la Brasa</span>
+          <h2>Nuestro Carbón de Roble</h2>
+          <p>En Urban Grill, el fuego no es solo una herramienta, es nuestro ingrediente secreto. Seleccionamos cuidadosamente carbón de roble que arde a temperaturas extremas para sellar los jugos naturales de nuestras carnes, otorgándoles un aroma ahumado irresistible y una textura perfecta.</p>
+          <p>No usamos parrillas eléctricas. Creemos en la conexión primitiva entre el fuego y la comida, respetando los tiempos de cocción para que cada hamburguesa y chinchurria sea una obra de arte culinaria.</p>
           <Link href="/nosotros" style={{ color: 'var(--color-principal)', fontWeight: 800, textDecoration: 'none', fontSize: '1.1rem', borderBottom: '2px solid' }}>Descubre nuestra historia &rarr;</Link>
         </div>
       </section>
@@ -90,35 +90,35 @@ export default function Home() {
         <div className="sticky-left">
           <span className="big-number">01</span>
           <span className="subtitle" style={{ fontWeight: 700, color: 'var(--color-principal)', textTransform: 'uppercase', letterSpacing: '2px' }}>Nuestros Pilares</span>
-          <h2 className="reveal">El Arte en su <br />Estado Más Crudo</h2>
-          <p className="reveal" style={{ fontSize: '1.2rem', color: 'var(--color-texto-claro)', lineHeight: 1.8, marginBottom: '2rem' }}>No fabricamos comida rápida. Cuidamos cada disco de masa como una obra individual. Observa el desarrollo de nuestros clásicos más aclamados a la derecha, esculpidos a fuego vivo.</p>
+          <h2 className="reveal">El Sabor en su <br />Estado Más Puro</h2>
+          <p className="reveal" style={{ fontSize: '1.2rem', color: 'var(--color-texto-claro)', lineHeight: 1.8, marginBottom: '2rem' }}>No preparamos comida rápida, cocinamos con alma. Cada plato que sale de nuestra cocina ha sido mimado por la brasa para garantizar una experiencia explosiva. Descubre nuestros imperdibles a la derecha.</p>
           <Link href="/menu" className="btn-nav-reserva reveal" style={{ display: 'inline-block' }}>Ver menú completo</Link>
         </div>
         <div className="sticky-right">
           <div className="sticky-card reveal">
-            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop" alt="Margherita" />
-            <h3>La Margherita Intacta</h3>
-            <p>Nuestra obra insignia. Queso Fior di latte de la Campania derretido bajo el fuego abrazador, tocado con albahaca fresca del día.</p>
+            <img src="img/Hamburguesa la Matadora.webp" alt="Matadora" />
+            <h3>Hamburguesa la Matadora</h3>
+            <p>Doble carne premium en pan brioche con queso asado y mermelada de tocineta. Una explosión de sabores urbanos.</p>
           </div>
           <div className="sticky-card reveal">
-            <img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143?q=80&w=800&auto=format&fit=crop" alt="Prosciutto" />
-            <h3>Prosciutto y Rúcula</h3>
-            <p>Laminado de prosciutto di Parma D.O.P. traído desde Italia, posado sobre rúcula salvaje recién cosechada. Perfecto contraste salado y amargo.</p>
+            <img src="img/Salchipapa Urban Chicken.webp" alt="Urban Chicken" />
+            <h3>Urban Chicken Special</h3>
+            <p>Nuestra versión premium de la salchipapa: pollo en salsa tártara, queso costeño y huevo de codorniz.</p>
           </div>
           <div className="sticky-card reveal">
-            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop" alt="Trufa" />
-            <h3>Trufa Blanca y Setas</h3>
-            <p>Una experiencia de lujo puro. Aceite de trufa blanca importado sobre una selección de setas silvestres y queso ricotta suave.</p>
+            <img src="img/Chinchurria Criolla.webp" alt="Chinchurria" />
+            <h3>Chinchurria Criolla</h3>
+            <p>Crocante, dorada y servida con nuestra papa criolla insignia. El alma de San Luis en un solo plato.</p>
           </div>
         </div>
       </section>
 
       {/* CLIP PATH REVEAL: Impresión Visual */}
       <section className="clip-reveal-container reveal" id="clipSection">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1920&auto=format&fit=crop" alt="Restaurante oscuro" className="clip-reveal-bg" />
+        <img src="img/interior-moody.png" alt="Interior premium de Urban Grill" className="clip-reveal-bg" />
         <div className="clip-content">
           <h2>Siente el fuego</h2>
-          <p style={{ fontSize: '1.5rem', textShadow: '0 4px 10px rgba(0,0,0,0.8)' }}>Ven a perderte en nuestro rincón de Nápoles.</p>
+          <p style={{ fontSize: '1.5rem', textShadow: '0 4px 10px rgba(0,0,0,0.8)' }}>Ven a perderte en el sabor auténtico de la brasa urbana.</p>
         </div>
       </section>
 
@@ -133,28 +133,28 @@ export default function Home() {
           {/* Card 1 */}
           <div className="philosophy-card reveal">
             <div className="philosophy-icon-wrapper">
-              <img src="/img/philo_dop.png" alt="D.O.P." />
+              <i className="fas fa-cow" style={{ fontSize: '2rem', color: 'var(--color-dorado)' }}></i>
             </div>
-            <h3>D.O.P. Garantizado</h3>
-            <p>No usamos sustitutos. Si dice Queso Parmigiano-Reggiano, tiene su sello de origen intacto tallado en la rueda de maduración.</p>
+            <h3>Carne 100% Certificada</h3>
+            <p>Solo usamos cortes de primera calidad. Nuestra carne nunca es congelada, garantizando jugosidad y frescura en cada hamburguesa.</p>
           </div>
 
           {/* Card 2 */}
           <div className="philosophy-card reveal" style={{ transitionDelay: '0.2s' }}>
             <div className="philosophy-icon-wrapper">
-              <img src="/img/philo_paciencia.png" alt="Paciencia" />
+              <i className="fas fa-hand-holding-heart" style={{ fontSize: '2rem', color: 'var(--color-dorado)' }}></i>
             </div>
-            <h3>Paciencia Culinaria</h3>
-            <p>La levadura industrial te hincha y duele. Nuestra técnica a base de tiempo predigiere los azúcares y te entrega una nube crujiente.</p>
+            <h3>Paciencia en la Brasa</h3>
+            <p>El fuego lento es nuestro dogma. No aceleramos los procesos; dejamos que el calor del carbón haga su magia de forma natural.</p>
           </div>
 
           {/* Card 3 */}
           <div className="philosophy-card reveal" style={{ transitionDelay: '0.4s' }}>
             <div className="philosophy-icon-wrapper">
-              <img src="/img/philo_fuego.png" alt="Fuego" />
+              <i className="fas fa-fire" style={{ fontSize: '2rem', color: 'var(--color-dorado)' }}></i>
             </div>
-            <h3>Fuego, el único juez</h3>
-            <p>Un cocinero no es nadie ante el volcán. Nuestro Pavesi decide crujir las imperfecciones de la pizza en tan solo 90 vibrantes segundos.</p>
+            <h3>Brasas con Alma</h3>
+            <p>Cada plato en Urban Grill pasa por el juicio del fuego. El resultado es un sabor ahumado que cuenta la historia de nuestro barrio.</p>
           </div>
         </div>
       </section>

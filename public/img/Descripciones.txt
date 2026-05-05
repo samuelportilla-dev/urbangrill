@@ -1,0 +1,38 @@
+Hamburguesa la del Barrio
+$ 19.000
+Hamburguesa de carne en pan brioche con queso doble crema, tomate, cebolla, lechuga fresca y salsa de la casa, acompañada de papas a la francesa.
+
+Hamburguesa la Matadora
+30.000
+Hamburguesa doble carne en pan brioche con queso asado, mermelada de tocineta y salsa de la casa, acompañada de papas a la francesa.
+
+Salchipapa Urban Chicken
+22.000
+Salchipapa con pollo en salsa tártara, salchicha, vegetales frescos, huevo de codorniz y queso costeño.
+
+Combo Hamburguesa la del Barrio
+24.000
+Hamburguesa de carne jugosa en pan Hamburguesa doble carne en pan brioche con queso asado, mermelada de tocineta y salsa de la casa. Incluye gaseosa PET 400 ml.
+
+Perro el Callejero
+13.000
+Perro caliente con salchicha americana, papita ripio, cebolla, queso y salsa de la casa acompañado de papas a la francesa.
+
+Chinchurria Criolla
+15.000
+Chinchurria crocante con papa criolla dorada y chimichurri al estilo casero.
+
+Chinchurria la Parcera
+15.000
+Chinchurria crocante acompañada de arepa de queso dorada con sabor típico colombiano.
+
+Chinchurria la Indomable
+18.000
+Chinchurria crocante con maduro, queso derretido, salsa de aguacate y chimichurri.
+
+
+
+
+
+
+

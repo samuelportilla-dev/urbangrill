@@ -5,17 +5,17 @@ import "../styles/nav.css";
 import "../styles/fx-effects.css";
 
 export const metadata = {
-  title: "La Nonna Rústica - El Verdadero Sabor Italiano",
-  description: "La verdadera esencia de la cocina rústica en tu mesa.",
+  title: "Urban Grill - El Auténtico Sabor de la Parrilla",
+  description: "Disfruta de las mejores hamburguesas, salchipapas y chinchurrias en San Luis.",
   icons: {
-    icon: '/img/logo.png',
-    shortcut: '/img/logo.png',
-    apple: '/img/logo.png',
+    icon: '/img/logo.jpg',
+    shortcut: '/img/logo.jpg',
+    apple: '/img/logo.jpg',
   }
 };
 
 export const viewport = {
-  themeColor: "#c1121f",
+  themeColor: "#FFB700",
 };
 
 export default function RootLayout({ children }) {

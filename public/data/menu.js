@@ -2,296 +2,195 @@
 
 const RESTAURANT_CONFIG = {
     // === DATOS DEL RESTAURANTE ===
-    id: "lanonna", // ID Único para sincronizar con Google Sheets (SaaS)
-    nombre: "LA NONNA RÚSTICA",
-    slogan: "La verdadera esencia de la cocina rústica italiana, en tu mesa.",
-    logo: "img/logo.png", 
-    googleSheetUrl: "https://docs.google.com/spreadsheets/d/1-zMzrxFpWAkU2u0eqFW1LnlG_a0a3VCze5EWchjkQQ0/export?format=csv", // Link configurado correctamente
-    telefonoWP: "573112518913",
-    mensajeWP: "¡Hola La Nonna! Quiero hacer el siguiente pedido:\n",
+    id: "urbangrill", // ID Único para sincronizar con Google Sheets (SaaS)
+    nombre: "URBAN GRILL",
+    slogan: "El auténtico sabor de la parrilla urbana.",
+    logo: "img/logo.jpg", 
+    googleSheetUrl: "", 
+    telefonoWP: "573153368179",
+    mensajeWP: "¡Hola Urban Grill! Quiero hacer el siguiente pedido:\n",
     moneda: "$",
     horarios: {
-        apertura: "11:00",
-        cierre: "22:00"
+        apertura: "12:00",
+        cierre: "23:00"
     },
 
     // === COLORES DE LA MARCA ===
     colores: {
-        principal: "#c1121f",
-        secundario: "#003049",
-        fondo: "#fdf8f5"
+        principal: "#FFB700",
+        secundario: "#121212",
+        fondo: "#ffffff"
     },
 
     // === BANNERS PROMOCIONALES ===
     promociones: [
         {
-            titulo: "Il Martedì di Pizza",
-            descripcion: "Disfruta de un 2x1 en nuestras Pizzas Clásicas todos los martes.",
-            fondo: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop"
+            titulo: "Martes de Hamburguesas",
+            descripcion: "Disfruta de un 2x1 en nuestras Hamburguesas del Barrio todos los martes.",
+            fondo: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?q=80&w=800&auto=format&fit=crop"
         },
         {
-            titulo: "Speciale Trufa Oscura",
-            descripcion: "Prueba la obra maestra Rústica Trufada con 15% de cortesía.",
-            fondo: "https://images.unsplash.com/photo-1552539618-7eec9b4d1796?q=80&w=800&auto=format&fit=crop"
+            titulo: "Urban Combo Night",
+            descripcion: "Sube de nivel con nuestro Combo Matador y recibe papas extra de cortesía.",
+            fondo: "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=800&auto=format&fit=crop"
         },
         {
-            titulo: "Serata di Vino",
-            descripcion: "Copa de vino italiano de la casa como cortesía por la compra de una Pasta Fresca.",
-            fondo: "https://images.unsplash.com/photo-1585553616435-2dc0a54e271d?q=80&w=800&auto=format&fit=crop"
+            titulo: "Chinchurria Fest",
+            descripcion: "La mejor chinchurria de San Luis con un 15% de descuento este fin de semana.",
+            fondo: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop"
         }
     ],
 
     // === CATEGORÍAS DEL MENÚ ===
-    categorias: ["Entradas", "Pizzas Clásicas", "Pizzas Especiales", "Pastas Frescas", "Bebidas", "Postres"],
+    categorias: ["Hamburguesas", "Salchipapas y Perros", "Chinchurrias", "Bebidas"],
 
     // === PRODUCTOS ===
     productos: [
-        // ENTRADAS
+        // HAMBURGUESAS
         {
             id: 101,
-            categoria: "Entradas",
-            nombre: "Pan con Ajo Supremo",
-            descripcion: "Rodajas de pan artesanal al horno de leña, topeadas con mantequilla de ajo asado, crema y costra de parmesano.",
-            precioOriginal: 20000,
-            precio: 15000,
-            imagen: "https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?q=80&w=600&auto=format&fit=crop", 
-            disponible: true
+            categoria: "Hamburguesas",
+            nombre: "Hamburguesa la del Barrio",
+            descripcion: "Hamburguesa de carne en pan brioche con queso doble crema, tomate, cebolla, lechuga fresca y salsa de la casa, acompañada de papas a la francesa.",
+            precioOriginal: 22000,
+            precio: 19000,
+            imagen: "img/Hamburguesa la del Barrio.webp", 
+            disponible: true,
+            modificadores: [
+                { nombre: "Extra Queso", precio: 3000 },
+                { nombre: "Tocineta", precio: 4000 },
+                { nombre: "Sin Cebolla", precio: 0 }
+            ],
+            etiqueta: "MÁS VENDIDO"
         },
         {
             id: 102,
-            categoria: "Entradas",
-            nombre: "Palitos de Queso Rústicos",
-            descripcion: "Nuestra versión de los tequeños, rellenos de mozzarella hilada, horneados y servidos con dip de pomodoro fresco.",
-            precio: 18000,
-            imagen: "https://bistrobadia.de/wp-content/uploads/2025/02/blaetterteig-kaesestangen-1024x576.jpg", 
-            disponible: true
+            categoria: "Hamburguesas",
+            nombre: "Hamburguesa la Matadora",
+            descripcion: "Hamburguesa doble carne en pan brioche con queso asado, mermelada de tocineta y salsa de la casa, acompañada de papas a la francesa.",
+            precio: 30000,
+            imagen: "img/Hamburguesa la Matadora.webp", 
+            disponible: true,
+            modificadores: [
+                { nombre: "Extra Queso Asado", precio: 4000 },
+                { nombre: "Doble Tocineta", precio: 6000 }
+            ],
+            etiqueta: "FAVORITO"
         },
         {
             id: 103,
-            categoria: "Entradas",
-            nombre: "Ensalada Caprese",
-            descripcion: "Tomates reliquia en rodajas, burrata fresca, hojas de albahaca recién cortadas, aceite de oliva virgen extra y aceto balsámico.",
-            precio: 25000,
-            imagen: "https://images.unsplash.com/photo-1529312266912-b33cfce2eefd?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 104,
-            categoria: "Entradas",
-            nombre: "Burrata Cremosa",
-            descripcion: "Esfera de mozzarella rellena de crema, recostada sobre pesto rústico y tomates deshidratados.",
-            precio: 32000,
-            imagen: "https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=600&auto=format&fit=crop", 
+            categoria: "Hamburguesas",
+            nombre: "Combo Hamburguesa la del Barrio",
+            descripcion: "Hamburguesa de carne jugosa en pan Hamburguesa doble carne en pan brioche con queso asado, mermelada de tocineta y salsa de la casa. Incluye gaseosa PET 400 ml.",
+            precio: 24000,
+            imagen: "img/Combo Hamburguesa la del Barrio.webp", 
             disponible: true
         },
 
-        // PIZZAS CLÁSICAS
+        // SALCHIPAPAS
         {
             id: 201,
-            categoria: "Pizzas Clásicas",
-            nombre: "Margherita Tradicional",
-            descripcion: "Salsa de tomate pomodoro, mozzarella de búfala fresca, albahaca y un toque de aceite de oliva.",
-            precio: 32000,
-            imagen: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=600&auto=format&fit=crop",
+            categoria: "Salchipapas y Perros",
+            nombre: "Salchipapa Urban Chicken",
+            descripcion: "Salchipapa con pollo en salsa tártara, salchicha, vegetales frescos, huevo de codorniz y queso costeño.",
+            precio: 22000,
+            imagen: "img/Salchipapa Urban Chicken.webp",
             disponible: true,
             modificadores: [
-                { nombre: "Borde de Queso", precio: 5000 },
-                { nombre: "Extra Queso", precio: 3000 },
-                { nombre: "Sin albahaca", precio: 0 }
+                { nombre: "Extra Pollo", precio: 5000 },
+                { nombre: "Extra Queso Costeño", precio: 3000 }
             ]
-        },
-        {
-            id: 202,
-            categoria: "Pizzas Clásicas",
-            nombre: "Pepperoni NYC",
-            descripcion: "Doble porción de pepperoni madurado, queso mozzarella fundido y nuestra salsa de la casa.",
-            precio: 35000,
-            imagen: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=600&auto=format&fit=crop",
-            disponible: true,
-            modificadores: [
-                { nombre: "Borde de Queso", precio: 5000 },
-                { nombre: "Extra Pepperoni", precio: 4000 },
-                { nombre: "Miel Picante", precio: 2000 }
-            ]
-        },
-        {
-            id: 203,
-            categoria: "Pizzas Clásicas",
-            nombre: "Hawaiana Premium",
-            descripcion: "Jamón ahumado artesanal, trozos de piña asada al barril, y extra queso mozzarella.",
-            precio: 34000,
-            imagen: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 204,
-            categoria: "Pizzas Clásicas",
-            nombre: "Pizza Vegetariana",
-            descripcion: "Champiñones frescos, aceitunas negras, pimientos asados, cebollas caramelizadas y rúcula.",
-            precioOriginal: 38000,
-            precio: 33000,
-            imagen: "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 205,
-            categoria: "Pizzas Clásicas",
-            nombre: "Calzone Napolitano",
-            descripcion: "Masa de pizza cerrada en horno de piedra, rellena de ricotta, salami, mozzarella y salsa roja.",
-            precio: 38000,
-            imagen: "https://images.unsplash.com/photo-1613564834361-9436948817d1?q=80&w=800&auto=format&fit=crop",
-            disponible: true
         },
 
-        // PIZZAS ESPECIALES
+        // PERROS CALIENTES
         {
             id: 301,
-            categoria: "Pizzas Especiales",
-            nombre: "La Carnívora",
-            descripcion: "Pepperoni, salami italiano, tocineta ahumada, jamón y trozos de salchicha de la casa.",
-            precio: 45000,
-            imagen: "https://images.unsplash.com/photo-1604382355076-af4b0eb60143?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 302,
-            categoria: "Pizzas Especiales",
-            nombre: "Prosciutto y Rúcula",
-            descripcion: "Mozzarella, prosciutto di Parma fresco, rúcula y queso parmesano rallado grueso.",
-            precio: 48000,
-            imagen: "https://images.unsplash.com/photo-1555072956-7758afb20e8f?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 303,
-            categoria: "Pizzas Especiales",
-            nombre: "Cuatro Quesos Blend",
-            descripcion: "Mix de mozzarella, gorgonzola (queso azul), provolone y parmesano crujiente. Sin salsa roja.",
-            precio: 42000,
-            imagen: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 304,
-            categoria: "Pizzas Especiales",
-            nombre: "Pizza Trufa y Setas",
-            descripcion: "Salsa madre blanca, setas silvestres confitadas, crema fresca y aceite de trufa blanca importado.",
-            precio: 55000,
-            imagen: "https://images.unsplash.com/photo-1552539618-7eec9b4d1796?q=80&w=600&auto=format&fit=crop",
+            categoria: "Salchipapas y Perros",
+            nombre: "Perro el Callejero",
+            descripcion: "Perro caliente con salchicha americana, papita ripio, cebolla, queso y salsa de la casa acompañado de papas a la francesa.",
+            precioOriginal: 15000,
+            precio: 13000,
+            imagen: "img/Perro el Callejero.webp",
             disponible: true
         },
 
-        // PASTAS FRESCAS
+        // CHINCHURRIAS
         {
             id: 401,
-            categoria: "Pastas Frescas",
-            nombre: "Fettuccine Alfredo",
-            descripcion: "Pasta fresca en sedosa salsa de crema gruesa, mantequilla y muchísimo parmesano.",
-            precio: 30000,
-            imagen: "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?q=80&w=600&auto=format&fit=crop",
+            categoria: "Chinchurrias",
+            nombre: "Chinchurria Criolla",
+            descripcion: "Chinchurria crocante con papa criolla dorada y chimichurri al estilo casero.",
+            precio: 15000,
+            imagen: "img/Chinchurria Criolla.webp",
             disponible: true
         },
         {
             id: 402,
-            categoria: "Pastas Frescas",
-            nombre: "Spaghetti Bolognesa",
-            descripcion: "Receta secreta: salsa de carne de res y cerdo molida a fuego lento cocinada por 6 horas.",
-            precio: 32000,
-            imagen: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?q=80&w=600&auto=format&fit=crop",
+            categoria: "Chinchurrias",
+            nombre: "Chinchurria la Parcera",
+            descripcion: "Chinchurria crocante acompañada de arepa de queso dorada con sabor típico colombiano.",
+            precio: 15000,
+            imagen: "img/Chinchurria la Parcera.webp",
             disponible: true
         },
         {
             id: 403,
-            categoria: "Pastas Frescas",
-            nombre: "Lasaña Clásica al Horno",
-            descripcion: "Capas de pasta gratinadas, salsa bechamel sedosa, mozzarella y boloñesa rica.",
-            precio: 35000,
-            imagen: "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 404,
-            categoria: "Pastas Frescas",
-            nombre: "Gnocchi al Pesto Siciliano",
-            descripcion: "Suaves bolitas de papa en una crema esmeralda de albahaca y piñones tostados.",
-            precio: 34000,
-            imagen: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 405,
-            categoria: "Pastas Frescas",
-            nombre: "Raviolis de Ternera",
-            descripcion: "Pasta fresca rellena de suave ternera estofada, bañada en mantequilla tostada y salvia.",
-            precio: 38000,
-            imagen: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-
-        // POSTRES
-        {
-            id: 501,
-            categoria: "Postres",
-            nombre: "Tiramisú della Nonna",
-            descripcion: "Cremoso postre de espresso con mascarpone frío, capas de soletilla y cacao puro.",
-            precio: 16000,
-            imagen: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 502,
-            categoria: "Postres",
-            nombre: "Panna Cotta de Frutos Rojos",
-            descripcion: "Suave textura de crema montada, con glaseado y puré fresco de frutas silvestres.",
-            precio: 14000,
-            imagen: "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 503,
-            categoria: "Postres",
-            nombre: "Gelato Italiano Piccola (2 Sabores)",
-            descripcion: "Helado artesanal compacto: opciones Stracciatella, Pistacho o Chocolate Suizo.",
-            precio: 12000,
-            imagen: "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?q=80&w=600&auto=format&fit=crop",
-            disponible: true
+            categoria: "Chinchurrias",
+            nombre: "Chinchurria la Indomable",
+            descripcion: "Chinchurria crocante con maduro, queso derretido, salsa de aguacate y chimichurri.",
+            precio: 18000,
+            imagen: "img/Chinchurria la Indomable.webp",
+            disponible: true,
+            modificadores: [
+                { nombre: "Extra Chimichurri", precio: 2000 },
+                { nombre: "Extra Queso", precio: 3000 }
+            ]
         },
 
         // BEBIDAS
         {
-            id: 601,
-            categoria: "Bebidas",
-            nombre: "Coca-Cola 1.5L",
-            descripcion: "Familiar bien fría.",
-            precio: 10000,
-            imagen: "https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 602,
-            categoria: "Bebidas",
-            nombre: "Coca-Cola Zero Lata",
-            descripcion: "En lata para máximo frío.",
-            precio: 5000,
-            imagen: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=600&auto=format&fit=crop",
-            disponible: true
-        },
-        {
-            id: 603,
+            id: 501,
             categoria: "Bebidas",
             nombre: "Limonada Natural",
-            descripcion: "Limonada frappé hecha al momento.",
+            descripcion: "Refrescante limonada natural preparada al instante.",
             precio: 6000,
-            imagen: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600&auto=format&fit=crop",
+            imagen: "img/Bebidas/LIMONADA NATURAL.avif",
             disponible: true
         },
         {
-            id: 604,
+            id: 502,
             categoria: "Bebidas",
-            nombre: "Cerveza Peroni Premium",
-            descripcion: "Clásica rubia italiana en botella, perfectamente balanceada.",
-            precio: 14000,
-            imagen: "https://images.unsplash.com/photo-1608270586620-248524c67de9?q=80&w=600&auto=format&fit=crop",
+            nombre: "Coca-Cola Lata 300ml",
+            descripcion: "Gaseosa Coca-Cola clásica bien fría.",
+            precio: 5000,
+            imagen: "img/Bebidas/Coca-Cola Lata 300ml.avif",
+            disponible: true
+        },
+        {
+            id: 503,
+            categoria: "Bebidas",
+            nombre: "Cerveza Poker Lata 300ml",
+            descripcion: "Cerveza nacional Poker en lata.",
+            precio: 5000,
+            imagen: "img/Bebidas/Cerveza POKER LATA 300ML.webp",
+            disponible: true
+        },
+        {
+            id: 504,
+            categoria: "Bebidas",
+            nombre: "Jugo de Mango",
+            descripcion: "Jugo natural de mango en agua o leche.",
+            precio: 7000,
+            imagen: "img/Bebidas/Jugo de Mango.jpg",
+            disponible: true
+        },
+        {
+            id: 505,
+            categoria: "Bebidas",
+            nombre: "Te Helado",
+            descripcion: "Te helado refrescante sabor a limón o durazno.",
+            precio: 6000,
+            imagen: "img/Bebidas/Te Helado.jpg",
             disponible: true
         }
     ]
