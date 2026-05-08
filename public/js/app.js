@@ -77,20 +77,34 @@ let categoriaActual = "Todos";
 let ultimoIdAgregado = null; // Para animaciones de impacto
 function transformarLinkImagen(url) {
     if (!url) return '';
+    
+    // 1. Manejo de Google Drive
     if (url.includes('drive.google.com')) {
         const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
         if (match && match[1]) {
             return `https://drive.google.com/uc?export=view&id=${match[1]}`;
         }
     }
-    // Resolucion relativa segura y simple para que nunca falle en subcarpetas
-    if (url.startsWith('img/')) {
-        if (window.location.pathname.includes('/pages/')) {
-            return '../../' + url;
-        }
-        return '/' + url; // Cambiado a ruta absoluta para Next.js
+
+    // 2. Si ya es una URL externa completa, no tocarla
+    if (url.startsWith('http')) return url;
+
+    // 3. Normalizar rutas locales para Next.js en Cloudflare
+    let path = url;
+    
+    // Si empieza con 'img/', le ponemos el '/' inicial
+    if (path.startsWith('img/')) {
+        path = '/' + path;
     }
-    return url;
+    
+    // Si no empieza con '/', y no es una URL externa, se lo ponemos por seguridad
+    if (!path.startsWith('/')) {
+        path = '/' + path;
+    }
+
+    // 4. Codificar espacios y caracteres especiales para servidores Linux
+    // Esto convierte "Hamburguesa del Barrio.webp" en "Hamburguesa%20del%20Barrio.webp"
+    return encodeURI(path);
 }
 
 function formatoDinero(valor) {
