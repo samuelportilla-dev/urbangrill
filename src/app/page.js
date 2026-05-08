@@ -74,7 +74,7 @@ export default function Home() {
       {/* Overlapping Structure 1 */}
       <section className="overlap-section reveal" style={{ marginTop: '5rem' }}>
         <div className="overlap-img">
-          <img src="img/carbon-roble.png" alt="Parrilla profesional con carbón de roble" />
+          <img src="/img/carbon-roble.png" alt="Parrilla profesional con carbón de roble" />
         </div>
         <div className="overlap-text">
           <span className="subtitle">La Maestría de la Brasa</span>
@@ -96,17 +96,17 @@ export default function Home() {
         </div>
         <div className="sticky-right">
           <div className="sticky-card reveal">
-            <img src="img/Hamburguesa la Matadora.webp" alt="Matadora" />
+            <img src="/img/Hamburguesa la Matadora.webp" alt="Matadora" />
             <h3>Hamburguesa la Matadora</h3>
             <p>Doble carne premium en pan brioche con queso asado y mermelada de tocineta. Una explosión de sabores urbanos.</p>
           </div>
           <div className="sticky-card reveal">
-            <img src="img/Salchipapa Urban Chicken.webp" alt="Urban Chicken" />
+            <img src="/img/Salchipapa Urban Chicken.webp" alt="Urban Chicken" />
             <h3>Urban Chicken Special</h3>
             <p>Nuestra versión premium de la salchipapa: pollo en salsa tártara, queso costeño y huevo de codorniz.</p>
           </div>
           <div className="sticky-card reveal">
-            <img src="img/Chinchurria Criolla.webp" alt="Chinchurria" />
+            <img src="/img/Chinchurria Criolla.webp" alt="Chinchurria" />
             <h3>Chinchurria Criolla</h3>
             <p>Crocante, dorada y servida con nuestra papa criolla insignia. El alma de San Luis en un solo plato.</p>
           </div>
@@ -115,7 +115,7 @@ export default function Home() {
 
       {/* CLIP PATH REVEAL: Impresión Visual */}
       <section className="clip-reveal-container reveal" id="clipSection">
-        <img src="img/interior-moody.png" alt="Interior premium de Urban Grill" className="clip-reveal-bg" />
+        <img src="/img/interior-moody.png" alt="Interior premium de Urban Grill" className="clip-reveal-bg" />
         <div className="clip-content">
           <h2>Siente el fuego</h2>
           <p style={{ fontSize: '1.5rem', textShadow: '0 4px 10px rgba(0,0,0,0.8)' }}>Ven a perderte en el sabor auténtico de la brasa urbana.</p>

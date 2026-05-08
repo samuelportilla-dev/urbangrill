@@ -58,7 +58,7 @@ export default function NosotrosPage() {
       {/* 10x Editorial Hero */}
       <header className="hero-editorial">
         <img
-          src="img/nosotros-hero.png"
+          src="/img/nosotros-hero.png"
           className="hero-editorial-img"
           alt="Hamburguesa premium Urban Grill"
         />
@@ -82,16 +82,16 @@ export default function NosotrosPage() {
         {/* Desktop Sticky Image Column */}
         <div className="history-img-col">
           <div className="history-img-wrapper active-img" id="img-1924">
-            <img src="img/historia-2018.png" alt="2018 - El Primer Fuego" />
+            <img src="/img/historia-2018.png" alt="2018 - El Primer Fuego" />
           </div>
           <div className="history-img-wrapper" id="img-1960">
-            <img src="img/historia-2020.png" alt="2020 - La Parrilla se Enciende" />
+            <img src="/img/historia-2020.png" alt="2020 - La Parrilla se Enciende" />
           </div>
           <div className="history-img-wrapper" id="img-2003">
-            <img src="img/historia-2023.png" alt="2023 - Consolidación Urbana" />
+            <img src="/img/historia-2023.png" alt="2023 - Consolidación Urbana" />
           </div>
           <div className="history-img-wrapper" id="img-hoy">
-            <img src="img/historia-hoy.png" alt="Hoy - La Experiencia Grill" />
+            <img src="/img/historia-hoy.png" alt="Hoy - La Experiencia Grill" />
           </div>
         </div>
 
@@ -100,7 +100,7 @@ export default function NosotrosPage() {
             <span className="history-year mobile-reveal">2018</span>
             <h2 className="mobile-reveal">El Primer Fuego</h2>
             <div className="mobile-img-container mobile-reveal">
-              <img src="img/historia-2018.png" alt="2018" />
+              <img src="/img/historia-2018.png" alt="2018" />
             </div>
             <p className="mobile-reveal">Todo comenzó en un garaje de San Luis. Nuestra pasión por la parrilla nos llevó a experimentar con diferentes tipos de carbón y cortes de carne, buscando ese sabor ahumado que recordábamos de las reuniones familiares.</p>
           </div>
@@ -109,7 +109,7 @@ export default function NosotrosPage() {
             <span className="history-year mobile-reveal">2020</span>
             <h2 className="mobile-reveal">La Parrilla se Enciende</h2>
             <div className="mobile-img-container mobile-reveal">
-              <img src="img/historia-2020.png" alt="2020" />
+              <img src="/img/historia-2020.png" alt="2020" />
             </div>
             <p className="mobile-reveal">En medio de los desafíos, decidimos abrir nuestro primer local oficial. La respuesta del barrio fue inmediata: la gente buscaba algo más que comida rápida, buscaba sabor real hecho con respeto.</p>
           </div>
@@ -118,7 +118,7 @@ export default function NosotrosPage() {
             <span className="history-year mobile-reveal">2023</span>
             <h2 className="mobile-reveal">Consolidación Urbana</h2>
             <div className="mobile-img-container mobile-reveal">
-              <img src="img/historia-2023.png" alt="2023" />
+              <img src="/img/historia-2023.png" alt="2023" />
             </div>
             <p className="mobile-reveal">Urban Grill se convirtió en un referente. Incorporamos nuestras famosas salchipapas premium y las chinchurrias criollas que hoy son leyenda, manteniendo siempre el carbón como el corazón de nuestra cocina.</p>
           </div>
@@ -127,7 +127,7 @@ export default function NosotrosPage() {
             <span className="history-year mobile-reveal">Hoy</span>
             <h2 className="mobile-reveal">La Experiencia Grill</h2>
             <div className="mobile-img-container mobile-reveal">
-              <img src="img/historia-hoy.png" alt="Hoy" />
+              <img src="/img/historia-hoy.png" alt="Hoy" />
             </div>
             <p className="mobile-reveal">Seguimos aquí, en Av 2 calle 12, honrando nuestras raíces urbanas. Sin atajos, sin carne congelada, solo fuego y pasión por lo que hacemos.</p>
           </div>

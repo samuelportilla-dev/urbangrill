@@ -9,7 +9,7 @@ function renderizarMiniMenuCats() {
 
     const isSubPage = window.location.pathname.includes('/pages/');
     const isLegal = window.location.pathname.includes('/legal/');
-    let imgPrefix = "";
+    let imgPrefix = "/"; // Forzamos ruta absoluta para Next.js
     if (isLegal) imgPrefix = "../../../";
     else if (isSubPage) imgPrefix = "../../";
 
@@ -88,7 +88,7 @@ function transformarLinkImagen(url) {
         if (window.location.pathname.includes('/pages/')) {
             return '../../' + url;
         }
-        return url;
+        return '/' + url; // Cambiado a ruta absoluta para Next.js
     }
     return url;
 }
@@ -338,7 +338,7 @@ function renderizarHeader() {
     const contenedorHeader = document.getElementById("ui-nombre-restaurante");
     if (!contenedorHeader) return;
     if (RESTAURANT_CONFIG.logo && RESTAURANT_CONFIG.logo !== "") {
-        contenedorHeader.innerHTML = `<img src="${RESTAURANT_CONFIG.logo}" alt="${RESTAURANT_CONFIG.nombre}" class="logo-hero">`;
+        contenedorHeader.innerHTML = `<img src="${transformarLinkImagen(RESTAURANT_CONFIG.logo)}" alt="${RESTAURANT_CONFIG.nombre}" class="logo-hero">`;
     } else {
         contenedorHeader.innerHTML = `<h1>${RESTAURANT_CONFIG.nombre}</h1>`;
     }

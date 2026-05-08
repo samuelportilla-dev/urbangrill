@@ -287,7 +287,7 @@ export default function ReservasPage() {
                       <div className="oc-overlay"><span>Negocios</span></div>
                     </div>
                     <div className="occasion-card" data-value="Otra">
-                      <img src="/img/ocasion_otra.png" alt="Otra" />
+                      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=400&auto=format&fit=crop" alt="Otra" />
                       <div className="oc-overlay"><span>Otra</span></div>
                     </div>
                   </div>
@@ -305,7 +305,7 @@ export default function ReservasPage() {
       <footer className="footer-premium footer-reservas">
         <div className="footer-content" style={{ textAlign: 'center', padding: '5rem 2rem' }}>
           <div className="footer-logo">
-            <img src="/img/logo.png" alt="Logo" className="footer-logo-img" style={{ margin: '0 auto' }} />
+            <img src="/img/logo.jpg" alt="Logo" className="footer-logo-img" style={{ margin: '0 auto' }} />
           </div>
           <p style={{ fontFamily: 'var(--fuente-titulos)', fontSize: '1.5rem', margin: '2rem 0', color: 'var(--res-gold)' }}>
             "El sabor de la brasa en su estado más puro."

@@ -54,7 +54,7 @@ const RESTAURANT_CONFIG = {
             descripcion: "Hamburguesa de carne en pan brioche con queso doble crema, tomate, cebolla, lechuga fresca y salsa de la casa, acompañada de papas a la francesa.",
             precioOriginal: 22000,
             precio: 19000,
-            imagen: "img/Hamburguesa la del Barrio.webp", 
+            imagen: "/img/Hamburguesa la del Barrio.webp", 
             disponible: true,
             modificadores: [
                 { nombre: "Extra Queso", precio: 3000 },
@@ -69,7 +69,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Hamburguesa la Matadora",
             descripcion: "Hamburguesa doble carne en pan brioche con queso asado, mermelada de tocineta y salsa de la casa, acompañada de papas a la francesa.",
             precio: 30000,
-            imagen: "img/Hamburguesa la Matadora.webp", 
+            imagen: "/img/Hamburguesa la Matadora.webp", 
             disponible: true,
             modificadores: [
                 { nombre: "Extra Queso Asado", precio: 4000 },
@@ -83,7 +83,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Combo Hamburguesa la del Barrio",
             descripcion: "Hamburguesa de carne jugosa en pan Hamburguesa doble carne en pan brioche con queso asado, mermelada de tocineta y salsa de la casa. Incluye gaseosa PET 400 ml.",
             precio: 24000,
-            imagen: "img/Combo Hamburguesa la del Barrio.webp", 
+            imagen: "/img/Combo Hamburguesa la del Barrio.webp", 
             disponible: true
         },
 
@@ -94,7 +94,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Salchipapa Urban Chicken",
             descripcion: "Salchipapa con pollo en salsa tártara, salchicha, vegetales frescos, huevo de codorniz y queso costeño.",
             precio: 22000,
-            imagen: "img/Salchipapa Urban Chicken.webp",
+            imagen: "/img/Salchipapa Urban Chicken.webp",
             disponible: true,
             modificadores: [
                 { nombre: "Extra Pollo", precio: 5000 },
@@ -110,7 +110,7 @@ const RESTAURANT_CONFIG = {
             descripcion: "Perro caliente con salchicha americana, papita ripio, cebolla, queso y salsa de la casa acompañado de papas a la francesa.",
             precioOriginal: 15000,
             precio: 13000,
-            imagen: "img/Perro el Callejero.webp",
+            imagen: "/img/Perro el Callejero.webp",
             disponible: true
         },
 
@@ -121,7 +121,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Chinchurria Criolla",
             descripcion: "Chinchurria crocante con papa criolla dorada y chimichurri al estilo casero.",
             precio: 15000,
-            imagen: "img/Chinchurria Criolla.webp",
+            imagen: "/img/Chinchurria Criolla.webp",
             disponible: true
         },
         {
@@ -130,7 +130,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Chinchurria la Parcera",
             descripcion: "Chinchurria crocante acompañada de arepa de queso dorada con sabor típico colombiano.",
             precio: 15000,
-            imagen: "img/Chinchurria la Parcera.webp",
+            imagen: "/img/Chinchurria la Parcera.webp",
             disponible: true
         },
         {
@@ -139,7 +139,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Chinchurria la Indomable",
             descripcion: "Chinchurria crocante con maduro, queso derretido, salsa de aguacate y chimichurri.",
             precio: 18000,
-            imagen: "img/Chinchurria la Indomable.webp",
+            imagen: "/img/Chinchurria la Indomable.webp",
             disponible: true,
             modificadores: [
                 { nombre: "Extra Chimichurri", precio: 2000 },
@@ -154,7 +154,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Limonada Natural",
             descripcion: "Refrescante limonada natural preparada al instante.",
             precio: 6000,
-            imagen: "img/Bebidas/LIMONADA NATURAL.avif",
+            imagen: "/img/Bebidas/LIMONADA NATURAL.avif",
             disponible: true
         },
         {
@@ -163,7 +163,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Coca-Cola Lata 300ml",
             descripcion: "Gaseosa Coca-Cola clásica bien fría.",
             precio: 5000,
-            imagen: "img/Bebidas/Coca-Cola Lata 300ml.avif",
+            imagen: "/img/Bebidas/Coca-Cola Lata 300ml.avif",
             disponible: true
         },
         {
@@ -172,7 +172,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Cerveza Poker Lata 300ml",
             descripcion: "Cerveza nacional Poker en lata.",
             precio: 5000,
-            imagen: "img/Bebidas/Cerveza POKER LATA 300ML.webp",
+            imagen: "/img/Bebidas/Cerveza POKER LATA 300ML.webp",
             disponible: true
         },
         {
@@ -181,7 +181,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Jugo de Mango",
             descripcion: "Jugo natural de mango en agua o leche.",
             precio: 7000,
-            imagen: "img/Bebidas/Jugo de Mango.jpg",
+            imagen: "/img/Bebidas/Jugo de Mango.jpg",
             disponible: true
         },
         {
@@ -190,7 +190,7 @@ const RESTAURANT_CONFIG = {
             nombre: "Te Helado",
             descripcion: "Te helado refrescante sabor a limón o durazno.",
             precio: 6000,
-            imagen: "img/Bebidas/Te Helado.jpg",
+            imagen: "/img/Bebidas/Te Helado.jpg",
             disponible: true
         }
     ]
